@@ -15,27 +15,27 @@ export const CirculationBox = () => {
         return await res.json();
     }
 
-    getBlockHeight("https://explorer.x-cash.org/getblockchaindata")
+    getBlockHeight("https://explorer.getxcash.org/getblockchaindata")
         .then((res) => setState(res))
         .catch(error => console.log("Error", error));
 
     return (
 
-        <Grid templateColumns="repeat(3, 1fr)" gap={6} mt='5'>
+        <Grid templateColumns="repeat(3, 1fr)" gap={6} margin="5" textAlign='center'>
 
-            <Box w="100%" h="10" bg="#1189a5" fontSize="24px" fontWeight='semibold' color="gray.900" textAlign='center'>
+            <Box w="100%" h="40px" bg="#1189a5" fontSize="24px" fontWeight='semibold' color="gray.900">
                 {state.maximum_supply ? `Maximum supply: ${state.maximum_supply}` : <Spinner size="sm" color='red' />}
             </Box>
 
-            <Box w="100%" h="10" bg="#1189a5" fontSize="24px" fontWeight='semibold' color="gray.900" textAlign='center'>
+            <Box w="100%" h="40px" bg="#1189a5" fontSize="24px" fontWeight='semibold' color="gray.900" >
                 {state.generated_supply ? `Generated supply: ${state.generated_supply}` : <Spinner size="sm" color='red' />}
             </Box>
 
-            <Box w="100%" h="10" bg="#1189a5" fontSize="24px" fontWeight='semibold' color="gray.900" textAlign='center'>
+            <Box w="100%" h="40px" bg="#1189a5" fontSize="24px" fontWeight='semibold' color="gray.900" >
                 {state.circulating_supply ? `Circulation supply: ${state.circulating_supply}` : <Spinner size="sm" color='red' />}
             </Box>
 
-        </Grid>
+        </Grid >
 
     );
 };

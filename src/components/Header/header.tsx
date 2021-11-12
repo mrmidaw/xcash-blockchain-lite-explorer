@@ -3,14 +3,12 @@ import { Box, Flex, Image, Container, useColorMode, Link } from '@chakra-ui/reac
 import { ColorModeSwitcher } from '../ColorModeSwitcher/colorModeSwitcher';
 import Logo from './xcash-round-logo.svg';
 
-
-
 export const Header = () => {
 
     const { colorMode } = useColorMode();
 
     return (
-        <Box as='header' py={2} bg={colorMode === 'dark' ? 'gray.600' : 'gray.200'}>
+        <Box as='header' py={2} h='65px' bg={colorMode === 'dark' ? 'gray.600' : 'gray.200'}>
             <Container maxW='container.lg'>
                 <Flex justifyContent="space-between" alignItems="center">
 
