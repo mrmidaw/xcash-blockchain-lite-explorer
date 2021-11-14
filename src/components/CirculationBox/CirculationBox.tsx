@@ -21,17 +21,17 @@ export const CirculationBox = () => {
 
     return (
 
-        <Grid templateColumns="repeat(3, 1fr)" gap={6} margin="5" textAlign='center'>
+        <Grid templateColumns="repeat(3, 1fr)" gap={6} margin="5" textAlign='center' fontSize="2xl" fontWeight='semibold'>
 
-            <Box w="100%" h="40px" bg="#1189a5" fontSize="24px" fontWeight='semibold' color="gray.900">
+            <Box w="100%" h="40px" bg="#1189a5" color="gray.900">
                 {state.maximum_supply ? `Maximum supply: ${state.maximum_supply}` : <Spinner size="sm" color='red' />}
             </Box>
 
-            <Box w="100%" h="40px" bg="#1189a5" fontSize="24px" fontWeight='semibold' color="gray.900" >
+            <Box w="100%" h="40px" bg="#1189a5" color="gray.900" >
                 {state.generated_supply ? `Generated supply: ${state.generated_supply}` : <Spinner size="sm" color='red' />}
             </Box>
 
-            <Box w="100%" h="40px" bg="#1189a5" fontSize="24px" fontWeight='semibold' color="gray.900" >
+            <Box w="100%" h="40px" bg="#1189a5" color="gray.900" >
                 {state.circulating_supply ? `Circulation supply: ${state.circulating_supply}` : <Spinner size="sm" color='red' />}
             </Box>
 

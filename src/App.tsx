@@ -8,6 +8,8 @@ import {
 import { Header } from "./components/Header/header";
 import { CirculationBox } from './components/CirculationBox/CirculationBox';
 import { Search } from "./components/Search/Search";
+import {ModalWarning} from './components/ModalWarning/ModalWarning';
+import { LastBlockList } from "./components/LastBlockBox/LastBlockList";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -17,12 +19,9 @@ export const App = () => (
 
     <Search />
 
+    <LastBlockList/>
 
-    <Container maxW="container.lg">
-      <Box>
-
-
-      </Box>
-    </Container>
+    
+    
   </ChakraProvider>
 )
