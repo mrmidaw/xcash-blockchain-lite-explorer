@@ -1,8 +1,7 @@
 import { Box, Grid, Spinner } from "@chakra-ui/react";
+import React, { FC, useState } from "react";
 
-import React, { useState } from "react";
-
-export const CirculationBox = () => {
+export const CirculationBox: FC = () => {
 
     const [state, setState] = useState({
         maximum_supply: '',

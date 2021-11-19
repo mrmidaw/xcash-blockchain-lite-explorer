@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { Box, useColorMode, Spinner, Grid, GridItem } from "@chakra-ui/react";
 
 
-export const LastBlockList = () => {
+export const LastBlockList:FC = () => {
     const { colorMode } = useColorMode();
     const [blockState, setBlockState] = useState({
         block_height: "",
@@ -33,7 +33,7 @@ export const LastBlockList = () => {
                 templateColumns="repeat(5, 1fr)"
                 gap={4}
                 textAlign='center'
-                fontSize='3xl'
+                fontSize='2xl'
                 color="gray.900"
                 fontWeight='semibold'
             >
@@ -46,7 +46,7 @@ export const LastBlockList = () => {
                 </GridItem >
 
                 <GridItem colSpan={2} bg="gray.400">
-                    {blockState.block_reward ? `Block Reward: ${blockState.block_reward} xcash` : <Spinner size="sm" color='red' />}
+                    {blockState.block_reward ? `Block Reward: ${blockState.block_reward}` : <Spinner size="sm" color='red' />}
                 </GridItem >
 
                 <GridItem colSpan={4} bg="gray.400">

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Box, Flex, Image, Container, useColorMode } from '@chakra-ui/react';
 import { ColorModeSwitcher } from '../ColorModeSwitcher/colorModeSwitcher';
 import Logo from './xcash-round-logo.svg';
 import { Text } from "@chakra-ui/react";
 
-export const Header = () => {
+export const Header: FC = () => {
 
     const { colorMode } = useColorMode();
 
