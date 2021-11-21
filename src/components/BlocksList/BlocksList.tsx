@@ -1,27 +1,22 @@
-import React, { FC, useState } from "react";
 import { Box, useColorMode, GridItem, SimpleGrid } from "@chakra-ui/react";
-import { convertSeconds } from "../helpers";
+import React, { FC } from "react";
 
-
-export const LastBlockList:FC = () => {
+export const BlocksList: FC = () => {
     const { colorMode } = useColorMode();
-    const [blockState, setBlockState] = useState({
-        block_height: '',
-        block_hash: '',
-        block_tx_amount: '',
-        block_reward: '',
-        block_timestamp: convertSeconds(''),
-        block_size: ''
-    });
 
     const getBlockHeight = async (url: string) => {
         const res = await fetch(url);
         return await res.json();
     }
 
-    getBlockHeight("https://explorer.getxcash.org/getlastblockdata")
-        .then((res) => setBlockState(res))
+    getBlockHeight("https://explorer.getxcash.org/getlastblockstransactiondata")
+        .then((res) => console.log(res))
+        .then((res) =>  {          
+            
+        })
         .catch(error => console.log("Error", error));
+
+
 
 
 
@@ -29,7 +24,7 @@ export const LastBlockList:FC = () => {
         <Box bg={colorMode === 'dark' ? 'gray.600' : 'gray.200'}
             w="100%" p={5} mt={5} borderRadius="lg"
         >
-            <SimpleGrid                
+            <SimpleGrid
                 templateRows="repeat(3, 1fr)"
                 templateColumns="repeat(5, 1fr)"
                 gap={4}
@@ -39,26 +34,24 @@ export const LastBlockList:FC = () => {
                 fontWeight='semibold'
             >
                 <GridItem rowSpan={2} colSpan={1} bg="gray.500">
-                    {`Block Height: ${blockState.block_height} Block Size: ${blockState.block_size} KB`}
+
                 </GridItem>
 
                 <GridItem colSpan={2} bg="gray.400">
-                    {`Block Time: ${blockState.block_timestamp}`}
+
                 </GridItem >
 
                 <GridItem colSpan={2} bg="gray.400">
-                    {`Block Reward: ${blockState.block_reward}`}
+
                 </GridItem >
 
                 <GridItem colSpan={4} bg="gray.400">
-                    {`Block Hash: ${blockState.block_hash}`}
 
                 </GridItem>
 
                 <GridItem colSpan={5} bg="gray.400">
-                    {blockState.block_tx_amount ? `Block Transaction Amount: ${blockState.block_tx_amount}` : `Block Transaction Amount: 0`}
-                </GridItem>
 
+                </GridItem>
 
             </SimpleGrid>
 

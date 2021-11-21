@@ -17,7 +17,7 @@ export const Search: FC = () => {
         <Box bg={colorMode === 'dark' ? 'gray.600' : 'gray.200'} w="100%" p={4} color="white" borderRadius="lg">
 
             <Input placeholder="Block Height, Black Hash, TX Hash"
-                size="md" w="92%" mr='5'
+                size="md" w="91%" mr='5'
                 onChange={(e) => setInputValue(e.target.value)}
             />
 
