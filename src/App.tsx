@@ -1,24 +1,18 @@
-import * as React from "react";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ChakraProvider, theme } from "@chakra-ui/react";
-import { Header } from "./components/Header/header";
-import { CirculationBox } from './components/CirculationBox/CirculationBox';
-import { Search } from "./components/Search/Search";
-import { LastBlockList } from './components/LastBlockList/LastBlockList';
-import { BlocksList } from "./components/BlocksList/BlocksList";
+import { Header } from "./components/header/Header";
+import { CirculationBox } from "./components/circulationBox/CirculationBox";
+
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Header />
+    <BrowserRouter>
+      <Header />
+      <CirculationBox />
+      <Routes>
 
-    <CirculationBox />
-
-    <Search />
-
-    <LastBlockList />
-
-    <BlocksList/>
-
-
-
+      </Routes>
+    </BrowserRouter>
   </ChakraProvider>
 )

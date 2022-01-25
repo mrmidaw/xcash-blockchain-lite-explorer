@@ -1,40 +1,54 @@
-import { Box, SimpleGrid} from "@chakra-ui/react";
-import React, { FC, useState } from "react";
+import { Box, SimpleGrid } from "@chakra-ui/react";
+import React, { FC, useState, useEffect } from "react";
+import axios from 'axios';
+import { CirculationSkeleton } from './CirculationSkeleton';
+import { toast } from 'react-toastify';
 
 export const CirculationBox: FC = () => {
 
-    const [state, setState] = useState({
+    const [circulation, setCirculation] = useState({
         maximum_supply: '',
         generated_supply: '',
         circulating_supply: ''
     });
 
-    const getBlockHeight = async (url: string) => {
-        const res = await fetch(url);
-        return await res.json();
-    }
+    const [loading, setLoading] = useState(true);
 
-    getBlockHeight("https://explorer.getxcash.org/getblockchaindata")
-        .then((res) => setState(res))
-        .catch(error => console.log("Error", error));
+    useEffect(() => {
+        const fetchCirculation = async () => {
+            try {
+                const response = await axios.get("https://explorer.getxcash.org/getblockchaindata");
+
+                setCirculation(response.data);
+                setLoading(false);
+            } catch (error) {
+                toast.error('Something going wrong')
+            }
+        };
+
+        fetchCirculation();
+    }, [])
+
+
+    if (loading) {
+        return <CirculationSkeleton />
+    };
 
     return (
-
-        <SimpleGrid columns={[1,1,2,3,3]} gap={6} margin="5" textAlign='center' fontSize="2xl" fontWeight='semibold'>
+        <SimpleGrid columns={[1, 1, 1, 3, 3]} gap={6} margin="5" textAlign='center' fontSize="2xl" fontWeight='semibold'>
 
             <Box w="100%" bg="#1189a5" color="gray.900">
-                {`Maximum supply: ${state.maximum_supply}`}
+                {`Maximum supply: ${circulation.maximum_supply}`}
             </Box>
 
             <Box w="100%" bg="#1189a5" color="gray.900" >
-                {`Generated supply: ${state.generated_supply}`}
+                {`Generated supply: ${circulation.generated_supply}`}
             </Box>
 
             <Box w="100%" bg="#1189a5" color="gray.900" >
-                {`Circulation supply: ${state.circulating_supply}`}
+                {`Circulation supply: ${circulation.circulating_supply}`}
             </Box>
 
         </SimpleGrid >
-
     );
 };

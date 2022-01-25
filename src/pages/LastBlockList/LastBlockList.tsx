@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import { Box, useColorMode, GridItem, SimpleGrid } from "@chakra-ui/react";
-import { convertSeconds } from "../helpers";
+import { convertSeconds } from "../../components/helpers";
 
 
 export const LastBlockList:FC = () => {
