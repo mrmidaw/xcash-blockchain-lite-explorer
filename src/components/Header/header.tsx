@@ -17,7 +17,7 @@ export const Header: FC = () => {
                         <Image
                             src={Logo}
                             alt='logo'
-                            boxSize="38px"
+                            boxSize={['24px', '30px', "36px"]}
                             objectFit="cover"
                         />
                     </a>
@@ -25,7 +25,7 @@ export const Header: FC = () => {
                     <Text
                         color="gray.900"
                         fontWeight='semibold'
-                        fontSize="32px"
+                        fontSize={['md', 'lg', 'xl', '3xl']}
                     >
                         XCASH BLOCKCHAIN LITE EXPLORER
                     </Text>
