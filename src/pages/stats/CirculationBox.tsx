@@ -1,8 +1,8 @@
-import { Box, SimpleGrid } from "@chakra-ui/react";
 import React, { FC, useState, useEffect } from "react";
 import axios from 'axios';
-import { CirculationSkeleton } from './CirculationSkeleton';
+import { Box, SimpleGrid } from "@chakra-ui/react";
 import { toast } from 'react-toastify';
+import { CirculationSkeleton } from "./CirculationSkeleton";
 
 export const CirculationBox: FC = () => {
 
