@@ -15,7 +15,8 @@ This explorer is used to view the Xcash ( Private Cryptocurrency for the Web3.0 
 - React Icons
 - Axios
 - React Toastify
-- Date-fns
+- React Moment
+
 
 ## Requirements
 

@@ -22,7 +22,15 @@ export const CirculationBox: FC = () => {
                 setCirculation(response.data);
                 setLoading(false);
             } catch (error) {
-                toast.error('Something going wrong')
+                toast.error('Something going wrong!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
             }
         };
 
