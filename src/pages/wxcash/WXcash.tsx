@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
-import { Box, Center, Text, Link, Container } from '@chakra-ui/react';
+import { Box, Center, Text, Link } from '@chakra-ui/react';
 
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 export const WXcash: FC = () => {
     return (
-        <Center mt={8}>
-            <Box bg='gray.600' p={4} m={4}>
+        <Center mt={8} >
+            <Box bg='gray.600' p={4} m={4} borderRadius="lg">
                 <Center>
                     <Text
                         color='orange.500'

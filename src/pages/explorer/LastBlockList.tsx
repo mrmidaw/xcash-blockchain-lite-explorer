@@ -1,16 +1,16 @@
 import React, { FC, useState } from "react";
 import { Box, useColorMode, GridItem, SimpleGrid } from "@chakra-ui/react";
-import { convertSeconds } from "../../components/helpers";
 
 
-export const LastBlockList:FC = () => {
+
+export const LastBlockList: FC = () => {
     const { colorMode } = useColorMode();
     const [blockState, setBlockState] = useState({
         block_height: '',
         block_hash: '',
         block_tx_amount: '',
         block_reward: '',
-        block_timestamp: convertSeconds(''),
+        block_timestamp: '',
         block_size: ''
     });
 
@@ -29,7 +29,7 @@ export const LastBlockList:FC = () => {
         <Box bg={colorMode === 'dark' ? 'gray.600' : 'gray.200'}
             w="100%" p={5} mt={5} borderRadius="lg"
         >
-            <SimpleGrid                
+            <SimpleGrid
                 templateRows="repeat(3, 1fr)"
                 templateColumns="repeat(5, 1fr)"
                 gap={4}

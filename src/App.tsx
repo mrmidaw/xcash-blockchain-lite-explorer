@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ChakraProvider, theme } from "@chakra-ui/react";
+
+
 import { Header } from "./components/header/Header";
 import { Explorer } from "./pages/explorer/Explorer";
 import { TXPool } from "./pages/txpool/TXPool";
@@ -28,4 +30,4 @@ export const App = () => (
       </Routes>
     </BrowserRouter>
   </ChakraProvider>
-)
+);
