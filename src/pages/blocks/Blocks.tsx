@@ -1,17 +1,21 @@
 import React, { FC } from 'react';
 import { useGetLastBlocksQuery } from '../../store/lastblocks/lastBlocks.api';
 import Moment from 'react-moment';
-
 import { GlobalSpinner } from '../../components/spinner/Spinner';
-
 import { Box, useColorMode, Grid, GridItem, Text } from '@chakra-ui/react';
-
-
+import { motion } from 'framer-motion';
 
 
 export const Blocks: FC = () => {
     const { data, isLoading, error } = useGetLastBlocksQuery();
     const { colorMode } = useColorMode();
+
+    // Framer Motion
+    const MotionBox = motion(Box)
+    const variants = {
+        visible: { opacity: 1 },
+        hidden: { opacity: 0 },
+    };
 
     if (isLoading) {
         return <GlobalSpinner />
@@ -55,7 +59,11 @@ export const Blocks: FC = () => {
 
     return (
         (totalBlocksArray.map((block) => (
-            <Box
+            <MotionBox
+                initial="hidden"
+                animate="visible"
+                variants={variants}
+                transition={{ duration: 0.8, times: [0, 0.5, 1] }}
                 key={block.block_height}
                 bg={colorMode === 'dark' ? 'gray.600' : 'gray.200'}
                 p={4} mx='auto' maxW='94%' borderRadius="lg" my={8}
@@ -102,7 +110,7 @@ export const Blocks: FC = () => {
 
                     </GridItem >
                 </Grid>
-            </Box>
+            </MotionBox>
         )))
     );
 };
