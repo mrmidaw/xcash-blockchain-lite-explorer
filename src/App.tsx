@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ChakraProvider, theme } from "@chakra-ui/react";
 
 
-import { Header } from './components/header/Header';
+import { Header } from "./components/Header/header";
 import { Blocks } from "./pages/blocks/Blocks";
 import { TXPool } from "./pages/txpool/TXPool";
 import { Search } from "./pages/search/Search";
