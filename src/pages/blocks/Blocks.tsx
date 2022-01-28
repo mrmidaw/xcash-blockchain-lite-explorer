@@ -2,8 +2,10 @@ import React, { FC } from 'react';
 import { useGetLastBlocksQuery } from '../../store/lastblocks/lastBlocks.api';
 import Moment from 'react-moment';
 
-import { Box, useColorMode, Grid, GridItem, Text, Center } from '@chakra-ui/react';
-import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react';
+import { GlobalSpinner } from '../../components/spinner/Spinner';
+
+import { Box, useColorMode, Grid, GridItem, Text } from '@chakra-ui/react';
+
 
 
 
@@ -12,14 +14,14 @@ export const Blocks: FC = () => {
     const { colorMode } = useColorMode();
 
     if (isLoading) {
-        return <h2>Loading...</h2>
+        return <GlobalSpinner />
     }
 
     if (error) {
-        return <h2>Something going wrong...</h2>
+        return <h1>Something going wrong</h1>
     }
 
-    // From Api comes global Object. This function return array from object to render in the component
+    // From Api come global Object. This function return array from object to render in the component
     const modifyFetchLastBlocks = () => {
         const totalBlocksArray = [];
 
@@ -101,8 +103,6 @@ export const Blocks: FC = () => {
                     </GridItem >
                 </Grid>
             </Box>
-        ))
-        )
-
+        )))
     );
 };
