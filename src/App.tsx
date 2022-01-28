@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ChakraProvider, theme } from "@chakra-ui/react";
 
 
-import { Header } from "./components/header/Header";
-import { Explorer } from "./pages/explorer/Explorer";
+import { Header } from "./components/Header/header";
+import { Blocks } from "./pages/blocks/Blocks";
 import { TXPool } from "./pages/txpool/TXPool";
 import { Search } from "./pages/search/Search";
 import { WXcash } from "./pages/wxcash/WXcash";
@@ -20,7 +20,7 @@ export const App = () => (
       <Header />
       <Navbar />
       <Routes>
-        <Route path='/' element={<Explorer />} />
+        <Route path='/' element={<Blocks />} />
         <Route path='/txpool' element={<TXPool />} />
         <Route path='/search' element={<Search />} />
         <Route path='/wxcash' element={<WXcash />} />

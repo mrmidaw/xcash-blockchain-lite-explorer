@@ -20,43 +20,43 @@ export const Navbar = () => {
             <SimpleGrid templateColumns='repeat(6, 1fr)' gap={2} >
 
                 <Button onClick={() => navigate('/')}>
-                    <FaWpexplorer size={20} />
-                    <Text ml={1} fontSize={['sm', 'md', 'lg', 'xl']} color='black' >
+                    <FaWpexplorer size={24} />
+                    <Text ml={2} fontSize={['sm', 'md', 'lg', 'xl']} color='black' >
                         Blocks
                     </Text>
                 </Button>
 
                 <Button onClick={() => navigate('/txpool')}>
-                    <GiWhirlpoolShuriken size={20} />
-                    <Text ml={1} fontSize={['sm', 'md', 'lg', 'xl']} color='black' >
+                    <GiWhirlpoolShuriken size={24} />
+                    <Text ml={2} fontSize={['sm', 'md', 'lg', 'xl']} color='black' >
                         TX Pool
                     </Text>
                 </Button>
 
                 <Button onClick={() => navigate('/search')}>
-                    <MdLocationSearching size={20} />
-                    <Text ml={1} fontSize={['sm', 'md', 'lg', 'xl']} color='black'>
+                    <MdLocationSearching size={24} />
+                    <Text ml={2} fontSize={['sm', 'md', 'lg', 'xl']} color='black'>
                         Search
                     </Text>
                 </Button>
 
                 <Button onClick={() => navigate('/wxcash')}>
-                    <MdWrapText size={20} />
-                    <Text ml={1} fontSize={['sm', 'md', 'lg', 'xl']} color='black'>
+                    <MdWrapText size={24} />
+                    <Text ml={2} fontSize={['sm', 'md', 'lg', 'xl']} color='black'>
                         WXcash
                     </Text>
                 </Button>
 
                 <Button onClick={() => navigate('/funds')}>
-                    <RiExchangeFundsLine size={20} />
-                    <Text ml={1} fontSize={['sm', 'md', 'lg', 'xl']} color='black' >
+                    <RiExchangeFundsLine size={24} />
+                    <Text ml={2} fontSize={['sm', 'md', 'lg', 'xl']} color='black' >
                         Funds
                     </Text>
                 </Button>
 
                 <Button onClick={() => navigate('/stats')}>
-                    <ImStatsBars2 size={20} />
-                    <Text ml={1} fontSize={['sm', 'md', 'lg', 'xl']} color='black'>
+                    <ImStatsBars2 size={24} />
+                    <Text ml={2} fontSize={['sm', 'md', 'lg', 'xl']} color='black'>
                         Stats
                     </Text>
                 </Button>
