@@ -15,7 +15,7 @@ export const Navbar = () => {
 
 
     return (
-        <Box bg={colorMode === 'dark' ? 'gray.600' : 'gray.200'} m={2} my={4} p={2} color='orange.400' borderRadius="lg" textAlign='center'>
+        <Box bg={colorMode === 'dark' ? 'gray.600' : 'gray.200'} m={2} my={4} p={4} color='orange.400' borderRadius="lg" textAlign='center'>
 
             <SimpleGrid templateColumns={['repeat(3, 1fr)', 'repeat(3, 1fr)', 'repeat(6, 1fr)']} gap={2} >
 

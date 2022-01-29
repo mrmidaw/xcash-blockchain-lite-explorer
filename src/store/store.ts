@@ -10,7 +10,7 @@ export const store = configureStore({
         [blockchainDataApi.reducerPath]: blockchainDataApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(lastBlocksApi.middleware),
+        getDefaultMiddleware().concat(lastBlocksApi.middleware, blockchainDataApi.middleware),        
 });
 setupListeners(store.dispatch);
 

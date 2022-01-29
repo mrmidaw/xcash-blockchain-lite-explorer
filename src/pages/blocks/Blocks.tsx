@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useGetLastBlocksQuery } from '../../store/lastBlocks/lastBlocks.api';
 import Moment from 'react-moment';
 import { GlobalSpinner } from '../../components/spinner/Spinner';
+import { Error } from '../error/Error';
 import { Box, useColorMode, Grid, GridItem, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
@@ -22,7 +23,7 @@ export const Blocks: FC = () => {
     }
 
     if (error) {
-        return <h1>Something going wrong</h1>
+        return <Error />
     }
 
     // From Api come global Object. This function return array from object to render in the component
