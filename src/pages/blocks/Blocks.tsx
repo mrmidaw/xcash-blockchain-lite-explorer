@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useGetLastBlocksQuery } from '../../store/lastblocks/lastBlocks.api';
+import { useGetLastBlocksQuery } from '../../store/lastBlocks/lastBlocks.api';
 import Moment from 'react-moment';
 import { GlobalSpinner } from '../../components/spinner/Spinner';
 import { Box, useColorMode, Grid, GridItem, Text } from '@chakra-ui/react';
@@ -107,7 +107,6 @@ export const Blocks: FC = () => {
                     <GridItem colSpan={5} bg='twitter.400'>
                         <Text >Block Hash:</Text>
                         <Text>{block.block_hash}</Text>
-
                     </GridItem >
                 </Grid>
             </MotionBox>

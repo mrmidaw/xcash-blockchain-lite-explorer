@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
-import { Box, Center, Text, Link } from '@chakra-ui/react';
+import { Box, Center, Text, Link} from '@chakra-ui/react';
 
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 export const WXcash: FC = () => {
     return (
         <Center mt={8} >
-            <Box bg='gray.600' p={4} m={4} borderRadius="lg">
+            <Box bg='gray.600' p={4} m={4} borderRadius="lg" maxW='94%' textAlign='center'>
                 <Center>
                     <Text
                         color='orange.500'
@@ -23,7 +23,7 @@ export const WXcash: FC = () => {
                         fontSize={['md', 'lg']}
                         fontWeight={500}
                     >
-                        WXCASH(Polygon) is a 1:1 ERC20 token representing a wrapped     version of XCASH on the Polygon (Matic) Network
+                        WXCASH(Polygon) is a 1:1 ERC20 token representing a wrapped version of XCASH on the Polygon (Matic) Network
                     </Text>
                 </Center>
                 <br />
