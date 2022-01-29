@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useGetLastBlocksQuery } from '../../store/lastBlocks/lastBlocks.api';
+import { useGetLastBlocksQuery } from '../../store/lastblocks/lastBlocks.api';
 import Moment from 'react-moment';
 import { GlobalSpinner } from '../../components/spinner/Spinner';
 import { Error } from '../error/Error';

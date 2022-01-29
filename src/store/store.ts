@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from '@reduxjs/toolkit/query';
 
-import { lastBlocksApi } from './lastBlocks/lastBlocks.api';
 import { blockchainDataApi } from "./blockchainData/blockchainData.api";
+import { lastBlocksApi } from './lastblocks/lastBlocks.api';
 
 export const store = configureStore({
     reducer: {
@@ -10,7 +10,7 @@ export const store = configureStore({
         [blockchainDataApi.reducerPath]: blockchainDataApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(lastBlocksApi.middleware, blockchainDataApi.middleware),        
+        getDefaultMiddleware().concat(lastBlocksApi.middleware, blockchainDataApi.middleware),
 });
 setupListeners(store.dispatch);
 
