@@ -18,6 +18,12 @@ export const Blocks: FC = () => {
         hidden: { opacity: 0 },
     };
 
+    // Function for placing commas in numbers
+    const putCommas = (num: number) => {
+        return num.toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    };
+
     if (isLoading) {
         return <GlobalSpinner />
     }
@@ -68,17 +74,17 @@ export const Blocks: FC = () => {
                 key={block.block_height}
                 bg={colorMode === 'dark' ? 'gray.600' : 'gray.200'}
                 p={4} mx='auto' maxW='94%' borderRadius="lg" my={8}
-                color='black' fontSize='xl' textAlign='center' fontWeight='medium' lineHeight={'tall'}
+                color='black' fontSize={['xs', 'xl', '2xl']} textAlign='center' fontWeight='medium' lineHeight={'tall'}
             >
                 <Grid
                     p={1}
-                    templateRows='repeat(3, 1fr)'
-                    templateColumns='repeat(6, 1fr)'
+                    templateRows={['repeat(2, 1fr)', 'repeat(3, 1fr)']}
+                    templateColumns={['repeat(6, 1fr)', 'repeat(6, 1fr)']}
                     gap={2}
                 >
                     <GridItem rowSpan={2} colSpan={1} bg='brown'>
                         <Text >Block Height:</Text>
-                        <Text >{block.block_height}</Text>
+                        <Text >{putCommas(block.block_height)}</Text>
                     </GridItem >
 
                     <GridItem colSpan={3} bg='red.400'>
