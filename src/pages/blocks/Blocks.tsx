@@ -73,7 +73,7 @@ export const Blocks: FC = () => {
                 transition={{ duration: 0.8, times: [0, 0.5, 1] }}
                 key={block.block_height}
                 bg={colorMode === 'dark' ? 'gray.600' : 'gray.200'}
-                p={4} mx='auto' maxW='94%' borderRadius="lg" my={8}
+                p={4} mx='auto' maxW='96%' borderRadius="lg" my={8}
                 color='black' fontSize={['xs', 'xl', '2xl']} textAlign='center' fontWeight='medium' lineHeight={'tall'}
             >
                 <Grid
@@ -83,13 +83,13 @@ export const Blocks: FC = () => {
                     gap={2}
                 >
                     <GridItem rowSpan={2} colSpan={1} bg='brown'>
-                        <Text >Block Height:</Text>
-                        <Text >{putCommas(block.block_height)}</Text>
+                        <Text >Block Size:</Text>
+                        <Text >{block.block_size}</Text>
                     </GridItem >
 
                     <GridItem colSpan={3} bg='red.400'>
-                        <Text >Block Size:</Text>
-                        <Text >{block.block_size}</Text>
+                        <Text > Block Height:</Text>
+                        <Text >{putCommas(block.block_height)}</Text>
                     </GridItem >
 
                     <GridItem colSpan={2} bg='teal.300'>
@@ -100,7 +100,7 @@ export const Blocks: FC = () => {
                     <GridItem colSpan={4} bg='telegram.700' >
                         <Text > Block Time:</Text>
                         <Text >
-                            <Moment unix format=" YYYY/MM/DD hh:mm:ss">
+                            <Moment unix format="DD/MM/YY - hh:mm:ss">
                                 {block.block_timestamp}
                             </Moment>
                         </Text>
