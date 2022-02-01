@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { useGetLastBlocksQuery } from '../../store/lastblocks/lastBlocks.api';
+import { BlockTransaction, IBlockTransaction } from './BlockTransaction';
 import Moment from 'react-moment';
 import { GlobalSpinner } from '../../components/spinner/Spinner';
 import { Error } from '../error/Error';
@@ -34,8 +35,6 @@ export const Blocks: FC = () => {
 
     // From Api come global Object. This function return array from object to render in the component
     const modifyFetchLastBlocks = () => {
-        const totalBlocksArray = [];
-
         const dataObj: {} = Object.values(data);
 
         const block_height: number[] = dataObj['0'].split("||");
@@ -45,8 +44,15 @@ export const Blocks: FC = () => {
         const block_reward: string[] = dataObj['4'].split('||');
         const block_timestamp: number[] = dataObj['5'].split("||");
         const block_mining_reward_transaction_hash: string[] = dataObj['7'].split("||");
+        const block_tx_hashes: string[] = dataObj['8'].split("||");
+        const block_tx_ringsizes: string[] = dataObj['9'].split("||");
+        const block_tx_fees: string[] = dataObj['10'].split("||");
+        const block_tx_sizes: string[] = dataObj['11'].split("||");
+        const block_tx_paymentid_settings: string[] = dataObj['12'].split("||");
+        const block_tx_privacy_settings: string[] = dataObj['13'].split("||");
+        console.log('block_height>>>', block_height);
 
-
+        const totalBlocksArray: any[] = [];
         for (let count = 0; count < block_height.length; count++) {
             totalBlocksArray[count] = {
                 "block_height": block_height[count],
@@ -55,8 +61,14 @@ export const Blocks: FC = () => {
                 "block_tx_amount": block_tx_amount[count],
                 "block_reward": parseFloat(block_reward[count]).toFixed(2) + " XCASH",
                 "block_timestamp": block_timestamp[count],
-                "block_mining_reward_transaction_hash": block_mining_reward_transaction_hash[count]
-            }
+                "block_mining_reward_transaction_hash": block_mining_reward_transaction_hash[count],
+                'block_tx_hashes': block_tx_hashes[count].split('|'),
+                'block_tx_ringsizes': block_tx_ringsizes[count].split('|'),
+                'block_tx_fees': block_tx_fees[count].split('|'),
+                'block_tx_sizes': block_tx_sizes[count].split('|'),
+                'block_tx_paymentid_settings': block_tx_paymentid_settings[count].split('|'),
+                'block_tx_privacy_settings': block_tx_privacy_settings[count].split('|')
+            };
         };
         return totalBlocksArray;
     };
@@ -65,7 +77,7 @@ export const Blocks: FC = () => {
 
 
     return (
-        (totalBlocksArray.map((block) => (
+        (totalBlocksArray.map((block: IBlockTransaction) => (
             <MotionBox
                 initial="hidden"
                 animate="visible"
@@ -73,8 +85,8 @@ export const Blocks: FC = () => {
                 transition={{ duration: 0.8, times: [0, 0.5, 1] }}
                 key={block.block_height}
                 bg={colorMode === 'dark' ? 'gray.600' : 'gray.200'}
-                p={4} mx='auto' maxW='96%' borderRadius="lg" my={8}
-                color='black' fontSize={['xs', 'xl', '2xl']} textAlign='center' fontWeight='medium' lineHeight={'tall'}
+                p={1} my={4} mx='auto' maxW='96%' borderRadius="lg"
+                color='black' fontSize={['sm', 'lg', '2xl']} textAlign='center' fontWeight='medium'
             >
                 <Grid
                     p={1}
@@ -82,7 +94,7 @@ export const Blocks: FC = () => {
                     templateColumns={['repeat(6, 1fr)', 'repeat(6, 1fr)']}
                     gap={2}
                 >
-                    <GridItem rowSpan={2} colSpan={1} bg='brown'>
+                    <GridItem rowSpan={2} colSpan={1} bg='brown' textAlign='center'>
                         <Text >Block Size:</Text>
                         <Text >{block.block_size}</Text>
                     </GridItem >
@@ -106,8 +118,8 @@ export const Blocks: FC = () => {
                         </Text>
                     </GridItem >
 
-                    <GridItem rowSpan={2} colSpan={1} bg='white'>
-                        <Text >Block Transaction Amount:</Text>
+                    <GridItem rowSpan={2} colSpan={1} bg='skyblue'>
+                        <Text>Block Transaction Amount:</Text>
                         <Text>{block.block_tx_amount}</Text>
                     </GridItem >
 
@@ -116,6 +128,9 @@ export const Blocks: FC = () => {
                         <Text>{block.block_hash}</Text>
                     </GridItem >
                 </Grid>
+
+                {/* Block Transaction  */}
+                {block.block_tx_amount > 0 && <BlockTransaction block={block} />}
             </MotionBox>
         )))
     );

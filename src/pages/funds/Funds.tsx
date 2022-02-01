@@ -4,16 +4,13 @@ import { Box, Text, Grid, GridItem } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
 
-
 export const Funds: FC = () => {
-
     // Framer Motion
     const MotionBox = motion(Box)
     const variants = {
         visible: { opacity: 1 },
         hidden: { opacity: 0 },
     };
-
 
     const data = [
         {
@@ -50,21 +47,34 @@ export const Funds: FC = () => {
             "id": "Total Amount",
             "data": [
                 {
-                    "x": "Total Amount",
-                    "y": 40
+                    "x": "Community Funds",
+                    "y": 20
+                },
+                {
+                    "x": "X-Network Inventory Fund",
+                    "y": 10
+                },
+                {
+                    "x": "Team Funds",
+                    "y": 5
+                },
+                {
+                    "x": "Private Investors Funds",
+                    "y": 5
                 }
             ]
         }
-    ]
+    ];
+
 
     return (
         <MotionBox
             initial="hidden" animate="visible"
             variants={variants} transition={{ duration: 0.8, times: [0, 0.5, 1] }}
-            maxW='96%' bg='gray.600' mx='auto' p={2}
+            maxW='96%' bg='gray.600' mx='auto' mb={2}
             borderRadius="lg" textAlign='center'
         >
-            <Grid templateColumns={'repeat(3, 1fr)'} gap={2} m={4}>
+            <Grid templateColumns={'repeat(3, 1fr)'} m={1}>
                 <GridItem>
                     <Text color='orange.500' fontSize={['md', 'lg', 'xl']} fontWeight={600}>
                         Total:
@@ -73,7 +83,6 @@ export const Funds: FC = () => {
                         </Text>
                     </Text>
                 </GridItem>
-
 
                 <GridItem>
                     <Text color='orange.500' fontSize={['md', 'lg', 'xl']} fontWeight={600}>
@@ -106,7 +115,7 @@ export const Funds: FC = () => {
                     endAngle='270'
                     innerRadius='0'
                     enableLabels='true'
-                    colors={{ scheme: 'paired' }}
+                    colors={{ scheme: 'category10' }}
                     radialAxisStart={{ tickSize: 5, tickPadding: 5, tickRotation: 0 }}
                     circularAxisOuter={{ tickSize: 5, tickPadding: 12, tickRotation: 0 }}
                     legends={[
@@ -135,7 +144,6 @@ export const Funds: FC = () => {
                     ]}
                 />
             </Box>
-
         </MotionBox>
     );
 };

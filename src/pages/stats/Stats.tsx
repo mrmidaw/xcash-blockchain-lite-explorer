@@ -41,7 +41,7 @@ export const Stats: FC = () => {
             </Text>
 
             <Box
-                bg='gray.600' maxW='96%' m={4} p={4} mx='auto'
+                bg='gray.600' maxW='96%' mb={4} p={4} mx='auto'
                 borderRadius="lg" fontSize={['md', '2xl']} fontWeight='500'
             >
                 <Grid templateColumns={['repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)']} gap={4}>
@@ -72,7 +72,7 @@ export const Stats: FC = () => {
             </Text>
 
             < Box
-                bg='gray.600' maxW='96%' m={4} p={4} mx='auto'
+                bg='gray.600' maxW='96%' mb={4} p={4} mx='auto'
                 borderRadius="lg" fontSize={['md', '2xl']} fontWeight='500'
             >
                 <Grid
@@ -100,7 +100,7 @@ export const Stats: FC = () => {
             </Text>
 
             < Box
-                bg='gray.600' maxW='96%' m={4} p={4} mx='auto'
+                bg='gray.600' maxW='96%' p={4} mx='auto'
                 borderRadius="lg" fontSize={['md', '2xl']} fontWeight='500'
             >
                 <Grid templateColumns={['repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)']} gap={4}>

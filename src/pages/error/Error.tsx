@@ -24,8 +24,8 @@ export const Error: FC = () => {
         >
             <Box textAlign='center' color='gray.100'>
                 <Box>
-                    <Text fontSize='8xl' fontWeight='bold' mb='6'>Oops!</Text>
-                    <Text fontSize='5xl' mb='8'>Something going wrong!</Text>
+                    <Text fontSize={['6xl', '8xl']} fontWeight='bold' mb='6'>Oops!</Text>
+                    <Text fontSize={['4xl', '5xl']} mb='8'>Something going wrong!</Text>
                     <Button onClick={() => navigate('/')} fontSize='2xl' size='lg' colorScheme='gray'>
                         Back To Home
                     </Button>

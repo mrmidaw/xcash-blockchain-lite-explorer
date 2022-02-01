@@ -24,8 +24,7 @@ export const WXcash: FC = () => {
                 <Box bg='gray.600' p={4} m={4} borderRadius="lg" maxW='94%' textAlign='center'>
                     <Center>
                         <Text
-                            color='orange.500'
-                            fontSize={['xl', '2xl', '3xl', '4xl', '5xl']}
+                            color='orange.500' fontSize={['xl', '2xl', '3xl', '4xl', '5xl']}
                             fontWeight={600}
                         >
                             WXCASH on the Polygon (Matic) Network
@@ -33,19 +32,13 @@ export const WXcash: FC = () => {
                     </Center>
 
                     <Center>
-                        <Text
-                            color='blue.300'
-                            fontSize={['md', 'lg']}
-                            fontWeight={500}
-                        >
+                        <Text color='blue.300' fontSize={['md', 'lg']} fontWeight={500}>
                             WXCASH(Polygon) is a 1:1 ERC20 token representing a wrapped version of XCASH on the Polygon (Matic) Network
                         </Text>
                     </Center>
                     <br />
                     <Center>
-                        <Text
-                            color='orange.500'
-                            fontSize={['md', 'lg']} fontWeight={500}
+                        <Text color='blue.300' fontSize={['md', 'lg']} fontWeight={500}
                             mx='auto'
                         >
                             Contract address:
@@ -77,6 +70,6 @@ export const WXcash: FC = () => {
                     </Center>
                 </Box >
             </Center >
-        </MotionBox>
+        </MotionBox >
     );
 };
