@@ -1,22 +1,21 @@
 import React, { FC } from 'react';
-import { Box, Image, Grid, useColorMode } from '@chakra-ui/react';
-import { ColorModeSwitcher } from '../ColorModeSwitcher/colorModeSwitcher';
+import { Box, Image, Grid } from '@chakra-ui/react';
 import Logo from './xcash-round-logo.svg';
+import xbankLogo from './xcash-icon_teal.svg';
 import { Text, Center } from "@chakra-ui/react";
 
 export const Header: FC = () => {
 
-    const { colorMode } = useColorMode();
 
     return (
-        <Box py={2} bg={colorMode === 'dark' ? 'gray.600' : 'gray.200'} textAlign='center'>
+        <Box py={2} bg='gray.600' textAlign='center'>
             <Grid templateColumns='0.1fr 1fr 0.1fr' alignItems="center">
                 <Center>
                     <a href="https://www.xcash.foundation/" target="_blank" rel="noopener noreferrer">
                         <Image
                             src={Logo}
                             alt='logo'
-                            boxSize={['20px', '30px', "36px"]}
+                            boxSize={['20px', '30px', "30px"]}
                             objectFit="cover"
                         />
                     </a>
@@ -27,7 +26,14 @@ export const Header: FC = () => {
                 </Text>
 
                 <Center>
-                    <ColorModeSwitcher justifySelf="flex-end" />
+                    <a href="https://x-bank.io/" target="_blank" rel="noopener noreferrer">
+                        <Image
+                            src={xbankLogo}
+                            alt='logo'
+                            boxSize={['15px', '20px', "25px"]}
+                            objectFit="cover"
+                        />
+                    </a>
                 </Center>
             </Grid>
         </Box>

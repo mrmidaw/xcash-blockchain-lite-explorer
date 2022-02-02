@@ -1,16 +1,16 @@
 import React, { FC } from 'react';
 import { useGetLastBlocksQuery } from '../../store/lastblocks/lastBlocks.api';
-import { BlockTransaction, IBlockTransaction } from './BlockTransaction';
+import { BlockTransaction, IBlock } from './BlockTransaction';
 import Moment from 'react-moment';
 import { GlobalSpinner } from '../../components/spinner/Spinner';
 import { Error } from '../error/Error';
-import { Box, useColorMode, Grid, GridItem, Text } from '@chakra-ui/react';
+import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import { CgSize } from 'react-icons/cg';
 
 
 export const Blocks: FC = () => {
     const { data, isLoading, error } = useGetLastBlocksQuery();
-    const { colorMode } = useColorMode();
 
     // Framer Motion
     const MotionBox = motion(Box)
@@ -77,61 +77,69 @@ export const Blocks: FC = () => {
 
 
     return (
-        (totalBlocksArray.map((block: IBlockTransaction) => (
+        (totalBlocksArray.map((block: IBlock) => (
             <MotionBox
                 initial="hidden"
                 animate="visible"
                 variants={variants}
                 transition={{ duration: 0.8, times: [0, 0.5, 1] }}
                 key={block.block_height}
-                bg={colorMode === 'dark' ? 'gray.600' : 'gray.200'}
-                p={1} my={4} mx='auto' maxW='96%' borderRadius="lg"
-                color='black' fontSize={['sm', 'lg', '2xl']} textAlign='center' fontWeight='medium'
+                bg='gray.500'
+                p={1} mb={12} mx='auto' maxW='96%' borderRadius="lg"
+                color='orange.500' fontSize={['sm', 'lg', '2xl']} textAlign='center' fontWeight='bold'
             >
                 <Grid
-                    p={1}
-                    templateRows={['repeat(2, 1fr)', 'repeat(3, 1fr)']}
-                    templateColumns={['repeat(6, 1fr)', 'repeat(6, 1fr)']}
-                    gap={2}
+                    templateRows={'repeat(3, 1fr)'}
+                    templateColumns={'repeat(12, 1fr)'}
+                    p={1} gap={2} textAlign='center'
                 >
-                    <GridItem rowSpan={2} colSpan={1} bg='brown' textAlign='center'>
-                        <Text >Block Size:</Text>
-                        <Text >{block.block_size}</Text>
+                    <GridItem colStart={1} colEnd={5} bg='gray.700'>
+                        <Text color='blue.400' >Block Size:</Text>
+                        <Text mx={2}>{block.block_size}</Text>
                     </GridItem >
 
-                    <GridItem colSpan={3} bg='red.400'>
-                        <Text > Block Height:</Text>
+                    <GridItem colStart={5} colEnd={9} bg='gray.600'>
+                        <Text color='blue.300'  > Block Height:</Text>
                         <Text >{putCommas(block.block_height)}</Text>
                     </GridItem >
 
-                    <GridItem colSpan={2} bg='teal.300'>
-                        <Text >Block Reward:</Text>
-                        <Text >{block.block_reward}</Text>
+                    <GridItem colStart={9} colEnd={13} bg='gray.700'>
+                        <Text color='blue.300' >Block Reward:</Text>
+                        <Text mx={2} >{block.block_reward}</Text>
                     </GridItem >
 
-                    <GridItem colSpan={4} bg='telegram.700' >
-                        <Text > Block Time:</Text>
-                        <Text >
+                    <GridItem colStart={1} colEnd={13} bg='gray.700'>
+                        <Text color='blue.300' >Block Hash:</Text>
+                        <Text mx={2}>{block.block_hash}</Text>
+                    </GridItem >
+
+                    <GridItem colStart={1} colEnd={13} bg='gray.600'>
+                        <Text color='blue.300' >
+                            Block Mining Reward Transaction Hash:</Text>
+                        <Text mx={2}>{block.block_mining_reward_transaction_hash}</Text>
+                    </GridItem >
+
+                    <GridItem colStart={1} colEnd={7} bg='gray.700' >
+                        <Text color='blue.300'> Block Time:</Text>
+                        <Text>
                             <Moment unix format="DD/MM/YY - hh:mm:ss">
                                 {block.block_timestamp}
                             </Moment>
                         </Text>
                     </GridItem >
 
-                    <GridItem rowSpan={2} colSpan={1} bg='skyblue'>
-                        <Text>Block Transaction Amount:</Text>
+                    <GridItem colStart={7} colEnd={13} bg='gray.700'>
+                        <Text mx={2} color='blue.300'>
+                            Transaction Amount:
+                        </Text>
                         <Text>{block.block_tx_amount}</Text>
                     </GridItem >
 
-                    <GridItem colSpan={5} bg='twitter.400'>
-                        <Text >Block Hash:</Text>
-                        <Text>{block.block_hash}</Text>
-                    </GridItem >
                 </Grid>
 
                 {/* Block Transaction  */}
                 {block.block_tx_amount > 0 && <BlockTransaction block={block} />}
-            </MotionBox>
+            </MotionBox >
         )))
     );
 };

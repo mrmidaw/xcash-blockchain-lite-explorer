@@ -6,19 +6,17 @@ import { MdLocationSearching } from 'react-icons/md';
 import { MdWrapText } from 'react-icons/md';
 import { RiExchangeFundsLine } from 'react-icons/ri';
 import { ImStatsBars2 } from 'react-icons/im';
-import { Box, useColorMode, SimpleGrid, Button, Text } from '@chakra-ui/react';
+import { Box, SimpleGrid, Button, Text } from '@chakra-ui/react';
 
 
 export const Navbar = () => {
-    const { colorMode } = useColorMode();
     const navigate = useNavigate();
 
 
     return (
-        <Box bg={colorMode === 'dark' ? 'gray.600' : 'gray.200'} m={2} my={4} p={4} color='orange.400' borderRadius="lg" textAlign='center'>
+        <Box bg='gray.600' m={2} my={4} p={4} color='orange.400' borderRadius="lg" textAlign='center'>
 
             <SimpleGrid templateColumns={['repeat(3, 1fr)', 'repeat(3, 1fr)', 'repeat(6, 1fr)']} gap={2} >
-
                 <Button onClick={() => navigate('/')}>
                     <Box mr={2} ><FaWpexplorer size={24} /></Box>
                     <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' >
@@ -60,7 +58,7 @@ export const Navbar = () => {
                         Stats
                     </Text>
                 </Button>
-            </SimpleGrid>
+            </ SimpleGrid>
         </Box >
     );
 };
