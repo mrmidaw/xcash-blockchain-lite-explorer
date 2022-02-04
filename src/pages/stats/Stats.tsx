@@ -2,11 +2,10 @@ import React, { FC } from 'react';
 import { useGetBlockchainDataQuery } from '../../store/blockchainData/blockchainData.api';
 import { Error } from '../error/Error';
 import { GlobalSpinner } from '../../components/spinner/Spinner';
-import { Box, useColorMode, Grid, GridItem, Text } from '@chakra-ui/react';
+import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
 export const Stats: FC = () => {
-    const { colorMode } = useColorMode();
     const { data, error, isLoading, } = useGetBlockchainDataQuery();
 
     // Framer Motion

@@ -1,7 +1,7 @@
-import React, { FC, useState } from "react";
-import { Box, IconButton, useColorMode, Center, Text, Input } from "@chakra-ui/react";
+import React, { FC } from "react";
+import { Box, Center, Text, } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { BsSearch } from 'react-icons/bs';
+
 
 
 export const Search: FC = () => {

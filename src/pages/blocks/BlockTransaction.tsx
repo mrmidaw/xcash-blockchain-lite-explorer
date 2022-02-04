@@ -31,7 +31,7 @@ export const BlockTransaction: FC<IBlock> = ({ block }) => {
                     </Text>
                     <Text mx={2} textAlign={'center'} color='blue.300'>
                         {block_tx_hashes.map((hash: string, i: number) => (
-                            <Text>{hash}</Text>
+                            <Text key={i}>{hash}</Text>
                         ))}
                     </Text>
                 </GridItem >

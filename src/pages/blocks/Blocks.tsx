@@ -6,7 +6,7 @@ import { GlobalSpinner } from '../../components/spinner/Spinner';
 import { Error } from '../error/Error';
 import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { CgSize } from 'react-icons/cg';
+
 
 
 export const Blocks: FC = () => {
@@ -50,7 +50,7 @@ export const Blocks: FC = () => {
         const block_tx_sizes: string[] = dataObj['11'].split("||");
         const block_tx_paymentid_settings: string[] = dataObj['12'].split("||");
         const block_tx_privacy_settings: string[] = dataObj['13'].split("||");
-        console.log('block_height>>>', block_height);
+
 
         const totalBlocksArray: any[] = [];
         for (let count = 0; count < block_height.length; count++) {
@@ -85,8 +85,8 @@ export const Blocks: FC = () => {
                 transition={{ duration: 0.8, times: [0, 0.5, 1] }}
                 key={block.block_height}
                 bg='gray.500'
-                p={1} mb={12} mx='auto' maxW='96%' borderRadius="lg"
-                color='orange.500' fontSize={['sm', 'lg', '2xl']} textAlign='center' fontWeight='bold'
+                p={2} my={6} mx='auto' maxW='96%' borderRadius="lg"
+                color='orange.400' fontSize={['sm', 'lg', '2xl']} textAlign='center' fontWeight='bold'
             >
                 <Grid
                     templateRows={'repeat(3, 1fr)'}
@@ -94,13 +94,18 @@ export const Blocks: FC = () => {
                     p={1} gap={2} textAlign='center'
                 >
                     <GridItem colStart={1} colEnd={5} bg='gray.700'>
-                        <Text color='blue.400' >Block Size:</Text>
-                        <Text mx={2}>{block.block_size}</Text>
+                        <Text color='blue.300'> Block Time:</Text>
+                        <Text >
+                            <Moment unix format="DD/MM/YY - hh:mm:ss">
+                                {block.block_timestamp}
+                            </Moment>
+                        </Text>
+
                     </GridItem >
 
                     <GridItem colStart={5} colEnd={9} bg='gray.600'>
-                        <Text color='blue.300'  > Block Height:</Text>
-                        <Text >{putCommas(block.block_height)}</Text>
+                        <Text color='blue.300'> Block Height:</Text>
+                        <Text fontSize={['xl', '2xl']} >{putCommas(block.block_height)}</Text>
                     </GridItem >
 
                     <GridItem colStart={9} colEnd={13} bg='gray.700'>
@@ -120,19 +125,15 @@ export const Blocks: FC = () => {
                     </GridItem >
 
                     <GridItem colStart={1} colEnd={7} bg='gray.700' >
-                        <Text color='blue.300'> Block Time:</Text>
-                        <Text>
-                            <Moment unix format="DD/MM/YY - hh:mm:ss">
-                                {block.block_timestamp}
-                            </Moment>
-                        </Text>
-                    </GridItem >
-
-                    <GridItem colStart={7} colEnd={13} bg='gray.700'>
                         <Text mx={2} color='blue.300'>
                             Transaction Amount:
                         </Text>
                         <Text>{block.block_tx_amount}</Text>
+                    </GridItem >
+
+                    <GridItem colStart={7} colEnd={13} bg='gray.700'>
+                        <Text color='blue.400' >Block Size:</Text>
+                        <Text mx={2}>{block.block_size}</Text>
                     </GridItem >
 
                 </Grid>
