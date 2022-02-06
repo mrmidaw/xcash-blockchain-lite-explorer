@@ -15,11 +15,8 @@ export const WXcash: FC = () => {
 
     return (
         <MotionBox
-            initial="hidden"
-            animate="visible"
-            variants={variants}
+            initial="hidden" animate="visible" variants={variants}
             transition={{ duration: 0.8, times: [0, 0.5, 1] }}
-
         >
             <Box bg='gray.600' mx='auto' borderRadius="lg" maxW='96%' textAlign='center'>
 
@@ -44,13 +41,10 @@ export const WXcash: FC = () => {
                     0x03678f2c2c762dc63c2bb738c3a837d366eda560
                 </Text>
 
-                <br />
-
                 <Box>
                     <Link
-                        color='orange.500' fontSize={['md', 'lg']} fontWeight={500}
-                        href='https://polygonscan.com/token/0x03678f2c2c762dc63c2bb738c3a837d366eda560'
-                        isExternal
+                        color='orange.400' fontSize={['md', 'lg']} fontWeight={500}
+                        href='https://polygonscan.com/token/0x03678f2c2c762dc63c2bb738c3a837d366eda560' isExternal
                     >
                         XCASH (Polygon) Token Tracker <ExternalLinkIcon mx='2px' />
                     </Link>
@@ -58,11 +52,80 @@ export const WXcash: FC = () => {
 
                 <Box>
                     <Link
-                        color='orange.500' fontSize={['md', 'lg']} fontWeight='500'
-                        href='https://polygonscan.com/address/0x03678f2c2c762dc63c2bb738c3a837d366eda560'
-                        isExternal
+                        color='orange.400' fontSize={['md', 'lg']} fontWeight='500'
+                        href='https://polygonscan.com/address/0x03678f2c2c762dc63c2bb738c3a837d366eda560' isExternal
                     >
                         XCASH (Polygon) Contract <ExternalLinkIcon mx='2px' />
+                    </Link>
+                </Box>
+
+                <br />
+
+                <Text color='blue.300' fontSize={['md', 'lg']} fontWeight={500} mx='auto'>
+                    X-Cash Links:
+                </Text>
+
+                <Box>
+                    <Link
+                        color='orange.400' fontSize={['md', 'lg']} fontWeight='500'
+                        href='https://www.xcash.foundation/' isExternal
+                    >
+                        X-CASH Foundation <ExternalLinkIcon mx='2px' />
+                    </Link>
+                </Box>
+
+                <Box>
+                    <Link
+                        color='orange.400' fontSize={['md', 'lg']} fontWeight='500'
+                        href='http://delegates.xcash.foundation/' isExternal
+                    >
+                        Delegates Explorer <ExternalLinkIcon mx='2px' />
+                    </Link>
+                </Box>
+
+                <Box>
+                    <Link
+                        color='orange.400' fontSize={['md', 'lg']} fontWeight='500'
+                        href='https://docs.xcash.foundation/' isExternal
+                    >
+                        Documentation <ExternalLinkIcon mx='2px' />
+                    </Link>
+                </Box>
+
+                <Box>
+                    <Link
+                        color='orange.400' fontSize={['md', 'lg']} fontWeight='500'
+                        href='https://explorer.xcash.foundation/Explorer' isExternal
+                    >
+                        Main Explorer <ExternalLinkIcon mx='2px' />
+                    </Link>
+                </Box>
+
+
+                <Box>
+                    <Link
+                        color='orange.400' fontSize={['md', 'lg']} fontWeight='500'
+                        href='https://www.x-bank.io/' isExternal
+                    >
+                        X-Bank <ExternalLinkIcon mx='2px' />
+                    </Link>
+                </Box>
+
+                <Box>
+                    <Link
+                        color='orange.400' fontSize={['md', 'lg']} fontWeight='500'
+                        href='https://github.com/X-CASH-official' isExternal
+                    >
+                        Github <ExternalLinkIcon mx='2px' />
+                    </Link>
+                </Box>
+
+                <Box>
+                    <Link
+                        color='orange.400' fontSize={['md', 'lg']} fontWeight='500'
+                        href='https://discord.com/invite/4CAahnd' isExternal
+                    >
+                        Discord <ExternalLinkIcon mx='2px' />
                     </Link>
                 </Box>
             </Box >
