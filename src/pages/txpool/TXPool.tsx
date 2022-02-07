@@ -8,7 +8,7 @@ import { GlobalSpinner } from '../../components/spinner/Spinner';
 
 interface ITxPool {
     transaction_hash: string;
-    transaction_tx_fees: string;
+    transaction_tx_fees: number;
     transaction_tx_size: string;
     transaction_tx_privacy_settings: string;
 };
@@ -29,7 +29,6 @@ export const TXPool: FC = () => {
         getAndTransformTxPoolData();
     }, []);
 
-
     // From fetch comes global object. This function fetch global object and return array as json
     const getAndTransformTxPoolData = async () => {
         setIsLoading(true);
@@ -47,17 +46,20 @@ export const TXPool: FC = () => {
             const dataObj: {} = Object.values(result);
 
             const transaction_hash: string[] = dataObj['0'].split("|");
-            const transaction_tx_fees: string[] = dataObj['3'].split("|");
+            const transaction_tx_fees: number[] = dataObj['3'].split("|");
             const transaction_tx_size: string[] = dataObj['4'].split("|");
             const transaction_tx_privacy_settings: string[] = dataObj['6'].split("|");
 
+            const decimalAmount = (num: number) => {
+                return num / 1000000;
+            }
 
             const totalTxPoolArray: ITxPool[] = [];
             for (let count = 0; count < transaction_hash.length; count++) {
                 totalTxPoolArray[count] = {
                     "transaction_hash": transaction_hash[count],
-                    "transaction_tx_fees": parseFloat(transaction_tx_fees[count]).toFixed(2),
-                    "transaction_tx_size": parseFloat(transaction_tx_size[count]).toFixed(2),
+                    "transaction_tx_fees": decimalAmount(transaction_tx_fees[count]),
+                    "transaction_tx_size": transaction_tx_size[count],
                     "transaction_tx_privacy_settings": transaction_tx_privacy_settings[count],
                 };
             };
@@ -72,11 +74,6 @@ export const TXPool: FC = () => {
 
     if (isLoading) {
         return <GlobalSpinner />
-    }
-
-    // to display correct transaction fee
-    const decimalAmount = (num: any) => {
-        return num / 1000000;
     }
 
 
@@ -98,12 +95,19 @@ export const TXPool: FC = () => {
                         >
                             <GridItem colStart={1} colEnd={5} bg='gray.700' >
                                 <Text color='blue.300' mx={2} >Transaction Fee:</Text>
-                                <Text mx={2} >{decimalAmount(pool.transaction_tx_fees)} XCASH</Text>
+                                <Text mx={2}>
+                                    {pool.transaction_tx_fees === 0 ?
+                                        '' : `${parseFloat(pool.transaction_tx_fees).toFixed(2)} XCASH`
+                                    }
+                                </Text>
                             </GridItem>
 
                             <GridItem colStart={5} colEnd={9} bg='gray.600'>
                                 <Text color='blue.300' mx={2} >Transaction Size:</Text>
-                                <Text mx={2} >{pool.transaction_tx_size} KB</Text>
+                                <Text mx={2}>
+                                    {!pool.transaction_tx_size ?
+                                        '' : `${parseFloat(pool.transaction_tx_size).toFixed(2)} KB`}
+                                </Text>
                             </GridItem>
 
                             <GridItem colStart={9} colEnd={13} bg='gray.700'>
