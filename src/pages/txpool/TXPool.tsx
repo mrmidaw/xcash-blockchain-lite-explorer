@@ -1,6 +1,5 @@
 import React, { FC, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Box, Button, Grid, GridItem, Text } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Error } from "../error/Error";
 import { GlobalSpinner } from '../../components/spinner/Spinner';
@@ -23,7 +22,6 @@ export const TXPool: FC = () => {
 
     const [txPool, setTxPool] = useState<ITxPool[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate();
 
     useEffect(() => {
         getAndTransformTxPoolData();
@@ -79,66 +77,46 @@ export const TXPool: FC = () => {
 
     return (
         <Box>
-            {txPool[0] ?
-
-                txPool.map((pool, index) => (
-                    <MotionBox
-                        initial="hidden" animate="visible" variants={variants}
-                        transition={{ duration: 0.8, times: [0, 0.5, 1] }}
-                        key={index} bg='gray.500' p={2} my={4} mx='auto' maxW='96%' borderRadius="lg" color='orange.400' fontSize={['sm', 'lg', '2xl']} textAlign='center' fontWeight='bold'
-                    >
-
-                        <Grid
-                            templateRows={'repeat(2, 1fr)'}
-                            templateColumns={'repeat(12, 1fr)'}
-                            p={1} gap={2} textAlign='center'
-                        >
-                            <GridItem colStart={1} colEnd={5} bg='gray.700' >
-                                <Text color='blue.300' mx={2} >Transaction Fee:</Text>
-                                <Text mx={2}>
-                                    {pool.transaction_tx_fees === 0 ?
-                                        '' : `${parseFloat(pool.transaction_tx_fees).toFixed(2)} XCASH`
-                                    }
-                                </Text>
-                            </GridItem>
-
-                            <GridItem colStart={5} colEnd={9} bg='gray.600'>
-                                <Text color='blue.300' mx={2} >Transaction Size:</Text>
-                                <Text mx={2}>
-                                    {!pool.transaction_tx_size ?
-                                        '' : `${parseFloat(pool.transaction_tx_size).toFixed(2)} KB`}
-                                </Text>
-                            </GridItem>
-
-                            <GridItem colStart={9} colEnd={13} bg='gray.700'>
-                                <Text color='blue.300' mx={2} >Privacy Settings:</Text>
-                                <Text mx={2} >{pool.transaction_tx_privacy_settings}</Text>
-                            </GridItem>
-
-                            <GridItem colStart={1} colEnd={13} bg='gray.600'>
-                                <Text color='blue.300' >Transaction Hash:</Text>
-                                <Text mx={2}>{pool.transaction_hash}</Text>
-                            </GridItem>
-
-                        </Grid>
-                    </MotionBox >
-                ))
-
-                : <MotionBox
+            {txPool.map((pool, index) => (
+                <MotionBox
                     initial="hidden" animate="visible" variants={variants}
                     transition={{ duration: 0.8, times: [0, 0.5, 1] }}
+                    key={index} bg='gray.500' p={2} my={4} mx='auto' maxW='96%' borderRadius="lg" color='orange.400' fontSize={['sm', 'lg', '2xl']} textAlign='center' fontWeight='bold'
                 >
-                    <Box textAlign='center' color='gray.100'>
-                        <Box>
-                            <Text fontSize={['5xl', '7xl']} fontWeight='bold' mb='6'>Oops!</Text>
-                            <Text fontSize={['3xl', '4xl']} mb='8'>Transaction Pool is Empty!</Text>
-                            <Button onClick={() => navigate('/')} fontSize='2xl' size='lg' colorScheme='gray'>
-                                Back To Home
-                            </Button>
-                        </Box>
-                    </Box>
+                    <Grid
+                        templateRows={'repeat(2, 1fr)'} templateColumns={'repeat(12, 1fr)'}
+                        p={1} gap={2} textAlign='center'
+                    >
+                        <GridItem colStart={1} colEnd={5} bg='gray.700' >
+                            <Text color='blue.300' mx={2} >Transaction Fee:</Text>
+                            <Text mx={2}>
+                                {pool.transaction_tx_fees === 0 ?
+                                    '' : `${parseFloat(pool.transaction_tx_fees).toFixed(2)} XCASH`
+                                }
+                            </Text>
+                        </GridItem>
+
+                        <GridItem colStart={5} colEnd={9} bg='gray.600'>
+                            <Text color='blue.300' mx={2} >Transaction Size:</Text>
+                            <Text mx={2}>
+                                {!pool.transaction_tx_size ?
+                                    '' : `${parseFloat(pool.transaction_tx_size).toFixed(2)} KB`}
+                            </Text>
+                        </GridItem>
+
+                        <GridItem colStart={9} colEnd={13} bg='gray.700'>
+                            <Text color='blue.300' mx={2} >Privacy Settings:</Text>
+                            <Text mx={2} >{pool.transaction_tx_privacy_settings}</Text>
+                        </GridItem>
+
+                        <GridItem colStart={1} colEnd={13} bg='gray.600'>
+                            <Text color='blue.300' >Transaction Hash:</Text>
+                            <Text mx={2}>{pool.transaction_hash}</Text>
+                        </GridItem>
+
+                    </Grid>
                 </MotionBox >
-            }
+            ))}
         </Box>
     )
 };
