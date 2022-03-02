@@ -34,6 +34,7 @@ export const Blocks: FC = () => {
 
     // From Api come global Object. This function return array from object to render in the component
     const modifyFetchLastBlocks = () => {
+        // eslint-disable-next-line
         const dataObj: any = Object.values(data);
 
         const block_height: number[] = dataObj['0'].split("||");

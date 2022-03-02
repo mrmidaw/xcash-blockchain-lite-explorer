@@ -6,7 +6,7 @@ import { ExternalLinkIcon } from '@chakra-ui/icons';
 export const WXcash: FC = () => {
 
     // Framer Motion
-    const MotionBox = motion(Box)
+    const MotionBox = motion(Box);
     const variants = {
         visible: { opacity: 1 },
         hidden: { opacity: 0 },

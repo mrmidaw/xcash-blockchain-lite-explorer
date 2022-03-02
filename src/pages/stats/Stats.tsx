@@ -9,24 +9,24 @@ export const Stats: FC = () => {
     const { data, error, isLoading, } = useGetBlockchainDataQuery();
 
     // Framer Motion
-    const MotionBox = motion(Box)
+    const MotionBox = motion(Box);
     const variants = {
         visible: { opacity: 1 },
         hidden: { opacity: 0 },
     };
 
     if (isLoading) {
-        return <GlobalSpinner />
+        return <GlobalSpinner />;
     }
 
     if (error) {
-        return <Error />
+        return <Error />;
     }
 
     // Function for placing commas in numbers
     const putCommas = (num: number) => {
         return num.toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     };
 
 

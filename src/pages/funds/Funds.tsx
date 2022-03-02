@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 export const Funds: FC = () => {
     // Framer Motion
-    const MotionBox = motion(Box)
+    const MotionBox = motion(Box);
     const variants = {
         visible: { opacity: 1 },
         hidden: { opacity: 0 },

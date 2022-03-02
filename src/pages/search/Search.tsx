@@ -10,7 +10,7 @@ export const Search: FC = () => {
     // const searchLogic = (value: string) => { };
 
     // Framer Motion
-    const MotionBox = motion(Box)
+    const MotionBox = motion(Box);
     const variants = {
         visible: { opacity: 1 },
         hidden: { opacity: 0 },

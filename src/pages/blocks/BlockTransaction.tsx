@@ -36,7 +36,7 @@ export const BlockTransaction: FC<IProps> = ({ block }) => {
             'block_tx_fees': decimalAmount(block_tx_fees[count]),
             'block_tx_paymentid_settings': block_tx_paymentid_settings[count],
             'block_tx_sizes': block_tx_sizes[count]
-        }
+        };
     }
 
 
@@ -44,19 +44,19 @@ export const BlockTransaction: FC<IProps> = ({ block }) => {
         <Box>
             <Text color='blue.300'>Block Transactions</Text>
             {totalTransactionsArray.map((transaction, index) => (
-                <Box key={index} fontSize={['xs', 'md']} fontWeight='bold' textAlign='center' bg='gray.300'
-                    my={2} mx='auto' borderRadius="base">
+                <Box key={index} fontSize={['xs', 'md']} fontWeight='bold' textAlign='center' bg='teal.400'
+                    my={3} mx='auto' borderRadius="base">
 
                     <Grid
                         templateRows={'repeat(2, 1fr)'} templateColumns={'repeat(12, 1fr)'}
-                        p={1} gap={1} textAlign='center'
+                        p={1} gap={1} 
                     >
                         <GridItem colStart={1} colEnd={13} bg='gray.600'>
                             <Text color='blue.300' >Transaction Hash:</Text>
                             <Text mx={2}>{transaction.block_tx_hashes}</Text>
                         </GridItem>
 
-                        <GridItem colStart={1} colEnd={5} bg='gray.700' >
+                        <GridItem colStart={1} colEnd={5} bg='gray.700'>
                             <Text color='blue.300' mx={2} >Transaction Fee:</Text>
                             <Text mx={2}>{transaction.block_tx_fees} XCASH</Text>
                         </GridItem>

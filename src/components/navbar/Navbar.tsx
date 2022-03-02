@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useNavigate } from "react-router-dom";
 import { FaWpexplorer } from 'react-icons/fa';
 import { GiWhirlpoolShuriken } from 'react-icons/gi';
@@ -9,7 +9,7 @@ import { ImStatsBars2 } from 'react-icons/im';
 import { Box, SimpleGrid, Button, Text } from '@chakra-ui/react';
 
 
-export const Navbar = () => {
+export const Navbar: FC = () => {
     const navigate = useNavigate();
 
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ChakraProvider, theme } from "@chakra-ui/react";
 
@@ -14,7 +14,7 @@ import { NotFound } from "./pages/notFound/NotFound";
 import { Navbar } from "./components/navbar/Navbar";
 
 
-export const App = () => (
+export const App: FC = () => (
   <ChakraProvider theme={theme}>
     <BrowserRouter>
       <Header />

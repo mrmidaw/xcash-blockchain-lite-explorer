@@ -8,7 +8,7 @@ export const Error: FC = () => {
     const navigate = useNavigate();
 
     // Framer Motion
-    const MotionBox = motion(Box)
+    const MotionBox = motion(Box);
     const variants = {
         visible: { opacity: 1 },
         hidden: { opacity: 0 },
