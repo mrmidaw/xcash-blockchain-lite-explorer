@@ -10,11 +10,11 @@ interface ITxPool {
     transaction_tx_fees: number;
     transaction_tx_size: string;
     transaction_tx_privacy_settings: string;
-};
+}
 
 export const TXPool: FC = () => {
     // Framer Motion
-    const MotionBox = motion(Box)
+    const MotionBox = motion(Box);
     const variants = {
         visible: { opacity: 1 },
         hidden: { opacity: 0 },
@@ -39,9 +39,9 @@ export const TXPool: FC = () => {
         };
 
         try {
-            let response = await fetch('https://explorer.getxcash.org/gettransactionpooldata', requestOptions);
-            let result = await response.json();
-            const dataObj: {} = Object.values(result);
+            const response = await fetch('https://explorer.getxcash.org/gettransactionpooldata', requestOptions);
+            const result = await response.json();
+            const dataObj = Object.values(result);
 
             const transaction_hash: string[] = dataObj['0'].split("|");
             const transaction_tx_fees: number[] = dataObj['3'].split("|");
@@ -50,7 +50,7 @@ export const TXPool: FC = () => {
 
             const decimalAmount = (num: number) => {
                 return num / 1000000;
-            }
+            };
 
             const totalTxPoolArray: ITxPool[] = [];
             for (let count = 0; count < transaction_hash.length; count++) {
@@ -60,18 +60,18 @@ export const TXPool: FC = () => {
                     "transaction_tx_size": transaction_tx_size[count],
                     "transaction_tx_privacy_settings": transaction_tx_privacy_settings[count],
                 };
-            };
+            }
 
             setTxPool(totalTxPoolArray);
             setIsLoading(false);
 
         } catch (error) {
-            return <Error />
+            return <Error />;
         }
     };
 
     if (isLoading) {
-        return <GlobalSpinner />
+        return <GlobalSpinner />;
     }
 
 
@@ -118,5 +118,5 @@ export const TXPool: FC = () => {
                 </MotionBox >
             ))}
         </Box>
-    )
+    );
 };

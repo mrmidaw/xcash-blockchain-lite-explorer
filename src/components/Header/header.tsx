@@ -15,13 +15,13 @@ export const Header: FC = () => {
                         <Image
                             src={Logo}
                             alt='logo'
-                            boxSize={['20px', '30px', "30px"]}
+                            boxSize={['20px', '30px', "33px"]}
                             objectFit="cover"
                         />
                     </a>
                 </Center>
 
-                <Text color="gray.900" fontWeight='semibold' fontSize={['lg', 'xl', '2xl', '3xl']}>
+                <Text color="gray.900" fontWeight='bold' fontSize={['lg', 'xl', '2xl', '3xl']}>
                     XCASH BLOCKCHAIN LITE EXPLORER
                 </Text>
 

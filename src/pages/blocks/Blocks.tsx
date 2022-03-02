@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
 import { useGetLastBlocksQuery } from '../../store/lastblocks/lastBlocks.api';
 import { BlockTransaction, IBlock } from './BlockTransaction';
 import Moment from 'react-moment';
@@ -8,12 +8,11 @@ import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
 
-
 export const Blocks: FC = () => {
     const { data, isLoading, error } = useGetLastBlocksQuery();
 
     // Framer Motion
-    const MotionBox = motion(Box)
+    const MotionBox = motion(Box);
     const variants = {
         visible: { opacity: 1 },
         hidden: { opacity: 0 },
@@ -22,20 +21,20 @@ export const Blocks: FC = () => {
     // Function for placing commas in numbers
     const putCommas = (num: number) => {
         return num.toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     };
 
     if (isLoading) {
-        return <GlobalSpinner />
+        return <GlobalSpinner />;
     }
 
     if (error) {
-        return <Error />
+        return <Error />;
     }
 
     // From Api come global Object. This function return array from object to render in the component
     const modifyFetchLastBlocks = () => {
-        const dataObj: {} = Object.values(data);
+        const dataObj: any = Object.values(data);
 
         const block_height: number[] = dataObj['0'].split("||");
         const block_hash: string[] = dataObj['1'].split("||");
@@ -52,7 +51,7 @@ export const Blocks: FC = () => {
         const block_tx_privacy_settings: string[] = dataObj['13'].split("||");
 
 
-        const totalBlocksArray: any[] = [];
+        const totalBlocksArray = [];
         for (let count = 0; count < block_height.length; count++) {
             totalBlocksArray[count] = {
                 "block_height": block_height[count],
@@ -69,7 +68,7 @@ export const Blocks: FC = () => {
                 'block_tx_paymentid_settings': block_tx_paymentid_settings[count].split('|'),
                 'block_tx_privacy_settings': block_tx_privacy_settings[count].split('|')
             };
-        };
+        }
         return totalBlocksArray;
     };
 
@@ -100,7 +99,6 @@ export const Blocks: FC = () => {
                                 {block.block_timestamp}
                             </Moment>
                         </Text>
-
                     </GridItem >
 
                     <GridItem colStart={5} colEnd={9} bg='gray.600'>

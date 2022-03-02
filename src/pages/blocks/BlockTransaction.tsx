@@ -17,26 +17,64 @@ export interface IBlock {
     block_tx_privacy_settings?: string[];
 }
 
-export const BlockTransaction: FC<IBlock> = ({ block }) => {
-    const { block_tx_hashes } = block;
+interface IProps {
+    block: IBlock
+}
+
+export const BlockTransaction: FC<IProps> = ({ block }) => {
+
+    const { block_tx_hashes, block_tx_fees, block_tx_paymentid_settings, block_tx_sizes } = block;
+
+    const decimalAmount = (num: number) => {
+        return (num / 1000000).toFixed(3);
+    };
+
+    const totalTransactionsArray = [];
+    for (let count = 0; count < block_tx_hashes.length; count++) {
+        totalTransactionsArray[count] = {
+            'block_tx_hashes': block_tx_hashes[count],
+            'block_tx_fees': decimalAmount(block_tx_fees[count]),
+            'block_tx_paymentid_settings': block_tx_paymentid_settings[count],
+            'block_tx_sizes': block_tx_sizes[count]
+        }
+    }
 
 
     return (
-        <Box bg='cyan.800' fontSize={['sm', 'xl']} fontWeight='bold' textAlign='center'>
+        <Box>
+            <Text color='blue.300'>Block Transactions</Text>
+            {totalTransactionsArray.map((transaction, index) => (
+                <Box key={index} fontSize={['xs', 'md']} fontWeight='bold' textAlign='center' bg='gray.300'
+                    my={2} mx='auto' borderRadius="base">
 
-            <Grid templateColumns='repeat(1, 1fr)' gap={2}>
-                <GridItem colSpan={12}>
-                    <Text fontSize={['md', '3xl']} color='orange.400'>
-                        Transaction Hash:
-                    </Text>
-                    <Text mx={2} textAlign={'center'} color='blue.300'>
-                        {block_tx_hashes.map((hash: string, i: number) => (
-                            <Text key={i}>{hash}</Text>
-                        ))}
-                    </Text>
-                </GridItem >
-            </Grid>
+                    <Grid
+                        templateRows={'repeat(2, 1fr)'} templateColumns={'repeat(12, 1fr)'}
+                        p={1} gap={1} textAlign='center'
+                    >
+                        <GridItem colStart={1} colEnd={13} bg='gray.600'>
+                            <Text color='blue.300' >Transaction Hash:</Text>
+                            <Text mx={2}>{transaction.block_tx_hashes}</Text>
+                        </GridItem>
 
-        </Box >
+                        <GridItem colStart={1} colEnd={5} bg='gray.700' >
+                            <Text color='blue.300' mx={2} >Transaction Fee:</Text>
+                            <Text mx={2}>{transaction.block_tx_fees} XCASH</Text>
+                        </GridItem>
+
+                        <GridItem colStart={5} colEnd={9} bg='gray.600'>
+                            <Text color='blue.300' mx={2} >Transaction Size:</Text>
+                            <Text mx={2}>{parseFloat(transaction.block_tx_sizes).toFixed(2)} KB</Text>
+                        </GridItem>
+
+                        <GridItem colStart={9} colEnd={13} bg='gray.700'>
+                            <Text color='blue.300' mx={2} >Privacy Settings:</Text>
+                            <Text mx={2}>{transaction.block_tx_paymentid_settings}</Text>
+                        </GridItem>
+
+
+                    </Grid>
+                </Box>
+            ))}
+        </Box>
     );
 };

@@ -14,47 +14,47 @@ export const Navbar = () => {
 
 
     return (
-        <Box bg='gray.600' m={2} my={4} p={4} color='orange.400' borderRadius="lg" textAlign='center'>
+        <Box bg='gray.600' m={2} my={4} p={4} color='orange.400' borderRadius="lg" textAlign='center' >
 
-            <SimpleGrid templateColumns={['repeat(3, 1fr)', 'repeat(3, 1fr)', 'repeat(6, 1fr)']} gap={2} >
+            <SimpleGrid templateColumns={['repeat(3, 1fr)', 'repeat(3, 1fr)', 'repeat(6, 1fr)']} gap={2}  >
                 <Button onClick={() => navigate('/')}>
                     <Box mr={2} ><FaWpexplorer size={24} /></Box>
-                    <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' >
+                    <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' fontWeight='bold' >
                         Blocks
                     </Text>
                 </Button>
 
                 <Button onClick={() => navigate('/txpool')}>
                     <Box mr={2} ><GiWhirlpoolShuriken size={24} /></Box>
-                    <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' >
+                    <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' fontWeight='bold'>
                         TX Pool
                     </Text>
                 </Button>
 
                 <Button onClick={() => navigate('/search')}>
                     <Box mr={2} ><MdLocationSearching size={24} /></Box>
-                    <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black'>
+                    <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' fontWeight='bold'>
                         Search
                     </Text>
                 </Button>
 
                 <Button onClick={() => navigate('/wxcash')}>
                     <Box mr={2} ><MdWrapText size={24} /></Box>
-                    <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black'>
+                    <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' fontWeight='bold'>
                         WXcash
                     </Text>
                 </Button>
 
                 <Button onClick={() => navigate('/funds')}>
                     <Box mr={2} ><RiExchangeFundsLine size={24} /></Box>
-                    <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' >
+                    <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' fontWeight='bold'>
                         Funds
                     </Text>
                 </Button>
 
                 <Button onClick={() => navigate('/stats')}>
                     <Box mr={2}><ImStatsBars2 size={22} /></Box>
-                    <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black'>
+                    <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' fontWeight='bold'>
                         Stats
                     </Text>
                 </Button>
