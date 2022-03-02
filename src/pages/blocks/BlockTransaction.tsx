@@ -12,7 +12,7 @@ export interface IBlock {
     block_tx_hashes?: string[];
     block_tx_ringsizes?: number[];
     block_tx_fees?: number[];
-    block_tx_sizes?: number[];
+    block_tx_sizes?: string[];
     block_tx_paymentid_settings?: string[];
     block_tx_privacy_settings?: string[];
 }
@@ -23,7 +23,7 @@ interface IProps {
 
 export const BlockTransaction: FC<IProps> = ({ block }) => {
 
-    const { block_tx_hashes, block_tx_fees, block_tx_paymentid_settings, block_tx_sizes } = block;
+    const { block_tx_hashes, block_tx_fees, block_tx_privacy_settings, block_tx_sizes } = block;
 
     const decimalAmount = (num: number) => {
         return (num / 1000000).toFixed(3);
@@ -34,7 +34,7 @@ export const BlockTransaction: FC<IProps> = ({ block }) => {
         totalTransactionsArray[count] = {
             'block_tx_hashes': block_tx_hashes[count],
             'block_tx_fees': decimalAmount(block_tx_fees[count]),
-            'block_tx_paymentid_settings': block_tx_paymentid_settings[count],
+            'block_tx_privacy_settings': block_tx_privacy_settings[count],
             'block_tx_sizes': block_tx_sizes[count]
         };
     }
@@ -49,7 +49,7 @@ export const BlockTransaction: FC<IProps> = ({ block }) => {
 
                     <Grid
                         templateRows={'repeat(2, 1fr)'} templateColumns={'repeat(12, 1fr)'}
-                        p={1} gap={1} 
+                        p={1} gap={1}
                     >
                         <GridItem colStart={1} colEnd={13} bg='gray.600'>
                             <Text color='blue.300' >Transaction Hash:</Text>
@@ -68,7 +68,7 @@ export const BlockTransaction: FC<IProps> = ({ block }) => {
 
                         <GridItem colStart={9} colEnd={13} bg='gray.700'>
                             <Text color='blue.300' mx={2} >Privacy Settings:</Text>
-                            <Text mx={2}>{transaction.block_tx_paymentid_settings}</Text>
+                            <Text mx={2}>{transaction.block_tx_privacy_settings}</Text>
                         </GridItem>
 
 

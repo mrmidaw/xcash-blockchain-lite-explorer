@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { useGetLastBlocksQuery } from '../../store/lastblocks/lastBlocks.api';
-import { BlockTransaction, IBlock } from './BlockTransaction';
+import { BlockTransaction } from './BlockTransaction';
 import Moment from 'react-moment';
 import { GlobalSpinner } from '../../components/spinner/Spinner';
 import { Error } from '../error/Error';
@@ -34,8 +34,8 @@ export const Blocks: FC = () => {
 
     // From Api come global Object. This function return array from object to render in the component
     const modifyFetchLastBlocks = () => {
-        // eslint-disable-next-line
-        const dataObj: any = Object.values(data);
+        
+        const dataObj = Object.values(data);
 
         const block_height: number[] = dataObj['0'].split("||");
         const block_hash: string[] = dataObj['1'].split("||");
@@ -77,7 +77,7 @@ export const Blocks: FC = () => {
 
 
     return (
-        (totalBlocksArray.map((block: IBlock) => (
+        (totalBlocksArray.map((block) => (
             <MotionBox
                 initial="hidden"
                 animate="visible"
