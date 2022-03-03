@@ -5,6 +5,21 @@ import { GlobalSpinner } from '../../components/spinner/Spinner';
 import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
+import { FaAlgolia } from 'react-icons/fa';
+import { RiCurrencyLine } from 'react-icons/ri';
+import { MdPortableWifiOff } from 'react-icons/md';
+import { CgMaximizeAlt } from 'react-icons/cg';
+import { CgMaximize } from 'react-icons/cg';
+import { CgFormatLineHeight } from "react-icons/cg";
+import { VscCircuitBoard } from 'react-icons/vsc';
+import { MdPhotoSizeSelectLarge } from 'react-icons/md';
+import { BiChevronLeftCircle } from 'react-icons/bi';
+import { RiGitRepositoryPrivateLine } from 'react-icons/ri';
+import { MdPublic } from 'react-icons/md';
+
+
+
+
 export const Stats: FC = () => {
     const { data, error, isLoading, } = useGetBlockchainDataQuery();
 
@@ -40,28 +55,63 @@ export const Stats: FC = () => {
             </Text>
 
             <Box
-                bg='gray.600' maxW='96%' mb={4} p={4} mx='auto'
+                bg='gray.500' maxW='96%' mb={4} p={4} mx='auto'
                 borderRadius="lg" fontSize={['md', '2xl']} fontWeight='500'
             >
                 <Grid templateColumns={['repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)']} gap={4}>
-                    <GridItem bg='cadetblue'>
-                        <Text color='blue.300'>Algorithm</Text>
-                        <Text>DPoPS</Text>
+                    <GridItem bg='gray.600'>
+                        <Grid templateColumns={'repeat(6, 1fr)'}>
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300' >
+                                <MdPortableWifiOff />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={7} bg='blue.500'>
+                                <Text color='blue.300'>Algorithm</Text>
+                                <Text>DPoPS</Text>
+                            </GridItem>
+                        </Grid>
                     </GridItem>
 
-                    <GridItem bg='blue.500'>
-                        <Text color='blue.300'>Block Time</Text>
-                        <Text>5 Minutes</Text>
+                    <GridItem bg='gray.600'>
+                        <Grid templateColumns={'repeat(6, 1fr)'} >
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300' >
+                                <FaAlgolia />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={7} bg='cadetblue'>
+                                <Text color='blue.300'>Block Time</Text>
+                                <Text>5 Minutes</Text>
+                            </GridItem>
+                        </Grid>
                     </GridItem>
 
-                    <GridItem bg='cadetblue'>
-                        <Text color='blue.300'>Block Height</Text>
-                        <Text>{putCommas(data.block_height)}</Text>
+                    <GridItem bg='gray.600'>
+                        <Grid templateColumns={'repeat(6, 1fr)'}>
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300' >
+                                <CgFormatLineHeight />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={7} bg='blue.500'>
+
+                                <Text color='blue.300'>Block Height</Text>
+                                <Text>{putCommas(data.block_height)}</Text>
+                            </GridItem>
+                        </Grid>
                     </GridItem>
 
-                    <GridItem bg='blue.500'>
-                        <Text color='blue.300'>Block Reward</Text>
-                        <Text>34,634</Text>
+                    <GridItem >
+                        <GridItem bg='gray.600'>
+                            <Grid templateColumns={'repeat(6, 1fr)'}>
+                                <GridItem colStart={1} colEnd={2} m='auto' color='blue.300' >
+                                    <RiCurrencyLine />
+                                </GridItem>
+
+                                <GridItem colStart={2} colEnd={7} bg='cadetblue'>
+                                    <Text color='blue.300'>Block Reward</Text>
+                                    <Text>33,634</Text>
+                                </GridItem>
+                            </Grid>
+                        </GridItem>
                     </GridItem>
                 </Grid>
             </Box>
@@ -71,25 +121,50 @@ export const Stats: FC = () => {
             </Text>
 
             < Box
-                bg='gray.600' maxW='96%' mb={4} p={4} mx='auto'
+                bg='gray.500' maxW='96%' mb={4} p={4} mx='auto'
                 borderRadius="lg" fontSize={['md', '2xl']} fontWeight='500'
             >
                 <Grid
                     templateColumns={['repeat(1, 1fr)', 'repeat(1, 1fr)', 'repeat(3, 1fr)']} gap={4}
                 >
-                    <GridItem bg='cadetblue'>
-                        <Text color='blue.300'>Maximum Supply</Text>
-                        <Text>{putCommas(data.maximum_supply)}</Text>
+                    <GridItem >
+                        <Grid templateColumns={'repeat(6, 1fr)'} bg='gray.600'>
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300'>
+                                <CgMaximizeAlt />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={7} bg='cadetblue'>
+                                <Text color='blue.300'>Maximum Supply</Text>
+                                <Text>{putCommas(data.maximum_supply)}</Text>
+                            </GridItem>
+                        </Grid>
                     </GridItem>
 
-                    <GridItem bg='blue.500'>
-                        <Text color='blue.300'>Generated Supply</Text>
-                        <Text>{putCommas(data.generated_supply)}</Text>
+                    <GridItem bg='gray.600'>
+                        <Grid templateColumns={'repeat(6, 1fr)'}>
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300'>
+                                <CgMaximize />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={7} bg='blue.500'>
+                                <Text color='blue.300'>Generated Supply</Text>
+                                <Text>{putCommas(data.generated_supply)}</Text>
+                            </GridItem>
+                        </Grid>
+
                     </GridItem>
 
                     <GridItem bg='cadetblue'>
-                        <Text color='blue.300'>Circulating Supply</Text>
-                        <Text>{putCommas(data.circulating_supply)}</Text>
+                        <Grid templateColumns={'repeat(6, 1fr)'} bg='gray.600'>
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300'>
+                                <VscCircuitBoard />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={7} bg='cadetblue'>
+                                <Text color='blue.300'>Circulating Supply</Text>
+                                <Text>{putCommas(data.circulating_supply)}</Text>
+                            </GridItem>
+                        </Grid>
                     </GridItem>
                 </Grid>
             </Box>
@@ -99,29 +174,61 @@ export const Stats: FC = () => {
             </Text>
 
             < Box
-                bg='gray.600' maxW='96%' mb={4} p={4} mx='auto'
+                bg='gray.500' maxW='96%' mb={4} p={4} mx='auto'
                 borderRadius="lg" fontSize={['md', '2xl']} fontWeight='500'
             >
                 <Grid templateColumns={['repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)']} gap={4}>
 
                     <GridItem bg='cadetblue'>
-                        <Text color='blue.300'>Blockchain Size</Text>
-                        <Text>{putCommas(data.current_estimated_blockchain_size)}</Text>
+                        <Grid templateColumns={'repeat(6, 1fr)'} bg='gray.600'>
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300'>
+                                <MdPhotoSizeSelectLarge />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={7} bg='cadetblue'>
+                                <Text color='blue.300'>Blockchain Size</Text>
+                                <Text>{putCommas(data.current_estimated_blockchain_size)}</Text>
+                            </GridItem>
+                        </Grid>
                     </GridItem>
 
-                    <GridItem bg='blue.500'>
-                        <Text color='blue.300'>Total Transactions</Text>
-                        <Text>{putCommas(data.total_tx)}</Text>
+                    <GridItem bg='gray.600'>
+                        <Grid templateColumns={'repeat(6, 1fr)'} >
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300' >
+                                <BiChevronLeftCircle />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={7} bg='blue.500'>
+                                <Text color='blue.300'>Total Transactions</Text>
+                                <Text>{putCommas(data.total_tx)}</Text>
+                            </GridItem>
+                        </Grid>
                     </GridItem>
 
                     <GridItem bg='cadetblue'>
-                        <Text color='blue.300'>Private Transactions</Text>
-                        <Text>{putCommas(data.private_tx_count)}</Text>
+                        <Grid templateColumns={'repeat(6, 1fr)'} bg='gray.600'>
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300'>
+                                <RiGitRepositoryPrivateLine />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={7} bg='cadetblue'>
+                                <Text color='blue.300'>Private Transactions</Text>
+                                <Text>{putCommas(data.private_tx_count)}</Text>
+                            </GridItem>
+                        </Grid>
                     </GridItem>
 
-                    <GridItem bg='blue.500'>
-                        <Text color='blue.300'>Public Transactions</Text>
-                        <Text>{putCommas(data.public_tx_count)}</Text>
+                    <GridItem bg='gray.600'>
+                        <Grid templateColumns={'repeat(6, 1fr)'} >
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300' >
+                                <MdPublic />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={7} bg='blue.500'>
+                                <Text color='blue.300'>Public Transactions</Text>
+                                <Text>{putCommas(data.public_tx_count)}</Text>
+                            </GridItem>
+                        </Grid>
                     </GridItem>
                 </Grid>
             </Box>

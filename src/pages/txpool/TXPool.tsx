@@ -99,13 +99,15 @@ export const TXPool: FC = () => {
                                     <RiCurrencyLine />
                                 </GridItem>
 
-                                <GridItem colStart={2} colEnd={7}>
+                                <GridItem colStart={2} colEnd={7} bg='gray.600'>
+
                                     <Text color='blue.300' mx={2} >Transaction Fee:</Text>
                                     <Text mx={2}>
                                         {pool.transaction_tx_fees === 0 ?
                                             '' : `${parseFloat(pool.transaction_tx_fees).toFixed(2)} XCASH`
                                         }
                                     </Text>
+
                                 </GridItem>
                             </Grid>
                         </GridItem>
@@ -116,7 +118,7 @@ export const TXPool: FC = () => {
                                     <MdPhotoSizeSelectLarge />
                                 </GridItem>
 
-                                <GridItem colStart={2} colEnd={7}>
+                                <GridItem colStart={2} colEnd={7} bg='gray.700'>
                                     <Text color='blue.300' mx={2} >Transaction Size:</Text>
                                     <Text mx={2}>
                                         {!pool.transaction_tx_size ?
@@ -132,7 +134,7 @@ export const TXPool: FC = () => {
                                     <RiGitRepositoryPrivateLine />
                                 </GridItem>
 
-                                <GridItem colStart={2} colEnd={7}>
+                                <GridItem colStart={2} colEnd={7} bg='gray.700'>
                                     <Text color='blue.300' mx={2} >Privacy Settings:</Text>
                                     <Text mx={2} >{pool.transaction_tx_privacy_settings}</Text>
                                 </GridItem>
@@ -145,7 +147,7 @@ export const TXPool: FC = () => {
                                     <GoCalendar />
                                 </GridItem>
 
-                                <GridItem colStart={2} colEnd={7}>
+                                <GridItem colStart={2} colEnd={7} bg='gray.600'>
                                     <Text mx={2} color='blue.300' >Date and Time:</Text>
                                     <Text mx={2}> {!pool.transaction_tx_size ? '' : '01/01/1970 - 3:00:00'}</Text>
                                 </GridItem>
