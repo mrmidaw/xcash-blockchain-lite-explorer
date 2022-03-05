@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 export interface IBlock {
     block_height: number;
@@ -53,7 +54,9 @@ export const BlockTransaction: FC<IProps> = ({ block }) => {
                     >
                         <GridItem colStart={1} colEnd={13} bg='gray.600'>
                             <Text color='blue.300' >Transaction Hash:</Text>
-                            <Text mx={2}>{transaction.block_tx_hashes}</Text>
+                            <Link to={`Transaction=${transaction.block_tx_hashes}`}>
+                                <Text mx={2}>{transaction.block_tx_hashes}</Text>
+                            </Link>
                         </GridItem>
 
                         <GridItem colStart={1} colEnd={5} bg='gray.700'>
@@ -70,8 +73,6 @@ export const BlockTransaction: FC<IProps> = ({ block }) => {
                             <Text color='blue.300' mx={2} >Privacy Settings:</Text>
                             <Text mx={2}>{transaction.block_tx_privacy_settings}</Text>
                         </GridItem>
-
-
                     </Grid>
                 </Box>
             ))}

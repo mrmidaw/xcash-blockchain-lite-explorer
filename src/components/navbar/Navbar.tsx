@@ -24,35 +24,35 @@ export const Navbar: FC = () => {
                     </Text>
                 </Button>
 
-                <Button onClick={() => navigate('/txpool')} bg='gray.600'>
+                <Button onClick={() => navigate('/TXPool')} bg='gray.600'>
                     <Box mr={2} ><GiWhirlpoolShuriken size={24} /></Box>
                     <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' fontWeight='bold'>
                         TX Pool
                     </Text>
                 </Button>
 
-                <Button onClick={() => navigate('/search')} bg='gray.600'>
+                <Button onClick={() => navigate('/Search')} bg='gray.600'>
                     <Box mr={2} ><MdLocationSearching size={24} /></Box>
                     <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' fontWeight='bold'>
                         Search
                     </Text>
                 </Button>
 
-                <Button onClick={() => navigate('/wxcash')} bg='gray.600'>
+                <Button onClick={() => navigate('/WXcash')} bg='gray.600'>
                     <Box mr={2} ><MdWrapText size={24} /></Box>
                     <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' fontWeight='bold'>
                         WXcash
                     </Text>
                 </Button>
 
-                <Button onClick={() => navigate('/funds')} bg='gray.600'>
+                <Button onClick={() => navigate('/Funds')} bg='gray.600'>
                     <Box mr={2} ><RiExchangeFundsLine size={24} /></Box>
                     <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' fontWeight='bold'>
                         Funds
                     </Text>
                 </Button>
 
-                <Button onClick={() => navigate('/stats')} bg='gray.600'>
+                <Button onClick={() => navigate('/Stats')} bg='gray.600'>
                     <Box mr={2}><ImStatsBars2 size={22} /></Box>
                     <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' fontWeight='bold'>
                         Stats

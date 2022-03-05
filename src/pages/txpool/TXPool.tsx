@@ -3,7 +3,7 @@ import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Error } from "../error/Error";
 import { GlobalSpinner } from '../../components/spinner/Spinner';
-
+import { Link } from 'react-router-dom';
 import { GoCalendar } from 'react-icons/go';
 import { RiCurrencyLine } from 'react-icons/ri';
 import { MdPhotoSizeSelectLarge } from 'react-icons/md';
@@ -162,7 +162,9 @@ export const TXPool: FC = () => {
 
                                 <GridItem colStart={2} colEnd={13} bg='gray.700'>
                                     <Text color='blue.300'>Transaction Hash:</Text>
-                                    <Text mx={2}>{pool.transaction_hash}</Text>
+                                    <Link to={`Transaction=${pool.transaction_hash}`}>
+                                        <Text mx={2}>{pool.transaction_hash}</Text>
+                                    </Link>
                                 </GridItem>
                             </Grid>
                         </GridItem>

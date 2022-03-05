@@ -4,6 +4,7 @@ import { ChakraProvider, theme } from "@chakra-ui/react";
 
 
 import { Header } from './components/Header/header';
+import { Navbar } from "./components/navbar/Navbar";
 import { Blocks } from "./pages/blocks/Blocks";
 import { TXPool } from "./pages/txpool/TXPool";
 import { Search } from "./pages/search/Search";
@@ -11,7 +12,7 @@ import { WXcash } from "./pages/wxcash/WXcash";
 import { Funds } from "./pages/funds/Funds";
 import { Stats } from "./pages/stats/Stats";
 import { NotFound } from "./pages/notFound/NotFound";
-import { Navbar } from "./components/navbar/Navbar";
+import { TransactionDetail } from './pages/transaction/TransactionDetail';
 
 
 export const App: FC = () => (
@@ -21,11 +22,12 @@ export const App: FC = () => (
       <Navbar />
       <Routes>
         <Route path='/' element={<Blocks />} />
-        <Route path='/txpool' element={<TXPool />} />
-        <Route path='/search' element={<Search />} />
-        <Route path='/wxcash' element={<WXcash />} />
-        <Route path='/funds' element={<Funds />} />
-        <Route path='/stats' element={<Stats />} />
+        <Route path='/TXPool' element={<TXPool />} />
+        <Route path='/Search' element={<Search />} />
+        <Route path='/WXcash' element={<WXcash />} />
+        <Route path='/Funds' element={<Funds />} />
+        <Route path='/Stats' element={<Stats />} />
+        <Route path="Transaction=:id" element={<TransactionDetail />} />
         <Route path='/*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>

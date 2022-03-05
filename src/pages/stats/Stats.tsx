@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 import { FaAlgolia } from 'react-icons/fa';
 import { RiCurrencyLine } from 'react-icons/ri';
-import { MdPortableWifiOff } from 'react-icons/md';
+import { AiOutlineBlock } from 'react-icons/ai';
 import { CgMaximizeAlt } from 'react-icons/cg';
 import { CgMaximize } from 'react-icons/cg';
 import { CgFormatLineHeight } from "react-icons/cg";
@@ -16,7 +16,6 @@ import { MdPhotoSizeSelectLarge } from 'react-icons/md';
 import { BiChevronLeftCircle } from 'react-icons/bi';
 import { RiGitRepositoryPrivateLine } from 'react-icons/ri';
 import { MdPublic } from 'react-icons/md';
-
 
 
 
@@ -62,7 +61,7 @@ export const Stats: FC = () => {
                     <GridItem bg='gray.600'>
                         <Grid templateColumns={'repeat(6, 1fr)'}>
                             <GridItem colStart={1} colEnd={2} m='auto' color='blue.300' >
-                                <MdPortableWifiOff />
+                                <AiOutlineBlock />
                             </GridItem>
 
                             <GridItem colStart={2} colEnd={7} bg='blue.500'>
@@ -92,7 +91,6 @@ export const Stats: FC = () => {
                             </GridItem>
 
                             <GridItem colStart={2} colEnd={7} bg='blue.500'>
-
                                 <Text color='blue.300'>Block Height</Text>
                                 <Text>{putCommas(data.block_height)}</Text>
                             </GridItem>

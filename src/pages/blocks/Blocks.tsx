@@ -34,7 +34,7 @@ export const Blocks: FC = () => {
 
     // From Api come global Object. This function return array from object to render in the component
     const modifyFetchLastBlocks = () => {
-        
+
         const dataObj = Object.values(data);
 
         const block_height: number[] = dataObj['0'].split("||");
@@ -95,11 +95,7 @@ export const Blocks: FC = () => {
                 >
                     <GridItem colStart={1} colEnd={5} bg='gray.700'>
                         <Text color='blue.300'> Block Time:</Text>
-                        <Text >
-                            <Moment unix format="DD/MM/YY - hh:mm:ss">
-                                {block.block_timestamp}
-                            </Moment>
-                        </Text>
+                        <Text><Moment unix format="DD/MM/YY - hh:mm:ss">{block.block_timestamp}</Moment></Text>
                     </GridItem >
 
                     <GridItem colStart={5} colEnd={9} bg='gray.600'>

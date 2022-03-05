@@ -69,10 +69,8 @@ export const Funds: FC = () => {
 
     return (
         <MotionBox
-            initial="hidden" animate="visible"
-            variants={variants} transition={{ duration: 0.8, times: [0, 0.5, 1] }}
-            maxW='96%' bg='gray.600' mx='auto' mb={2}
-            borderRadius="lg" textAlign='center'
+            initial="hidden" animate="visible" variants={variants} transition={{ duration: 0.8, times: [0, 0.5, 1] }}
+            maxW='96%' bg='gray.600' mx='auto' mb={2} borderRadius="lg" textAlign='center'
         >
             <Grid templateColumns={'repeat(3, 1fr)'} m={1}>
                 <GridItem>
@@ -90,7 +88,6 @@ export const Funds: FC = () => {
                         <Text color='blue.300'>
                             29.16 Billion
                         </Text>
-
                     </Text>
                 </GridItem>
 
