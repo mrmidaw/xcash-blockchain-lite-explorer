@@ -90,7 +90,7 @@ export const TXPool: FC = () => {
                     key={index} bg='gray.500' p={2} my={4} mx='auto' maxW='96%' borderRadius="lg" color='orange.400' fontSize={['sm', 'lg', '2xl']} textAlign='center' fontWeight='bold'
                 >
                     <Grid
-                        templateRows={'repeat(3, 1fr)'} templateColumns={'repeat(12, 1fr)'}
+                        templateRows={'repeat(1, 1fr)'} templateColumns={'repeat(12, 1fr)'}
                         p={1} gap={2} textAlign='center'
                     >
                         <GridItem colStart={1} colEnd={7} bg='gray.700'>
@@ -100,14 +100,12 @@ export const TXPool: FC = () => {
                                 </GridItem>
 
                                 <GridItem colStart={2} colEnd={7} bg='gray.600'>
-
                                     <Text color='blue.300' mx={2} >Transaction Fee:</Text>
                                     <Text mx={2}>
-                                        {pool.transaction_tx_fees === 0 ?
-                                            '' : `${parseFloat(pool.transaction_tx_fees).toFixed(2)} XCASH`
+                                        {pool.transaction_tx_fees === 0 ? '' :
+                                            `${parseFloat(pool.transaction_tx_fees).toFixed(2)} XCASH`
                                         }
                                     </Text>
-
                                 </GridItem>
                             </Grid>
                         </GridItem>
@@ -162,9 +160,7 @@ export const TXPool: FC = () => {
 
                                 <GridItem colStart={2} colEnd={13} bg='gray.700'>
                                     <Text color='blue.300'>Transaction Hash:</Text>
-                                    <Link to={`Transaction=${pool.transaction_hash}`}>
-                                        <Text mx={2}>{pool.transaction_hash}</Text>
-                                    </Link>
+                                    <Text mx={2}>{pool.transaction_hash}</Text>
                                 </GridItem>
                             </Grid>
                         </GridItem>

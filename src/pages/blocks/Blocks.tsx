@@ -89,7 +89,7 @@ export const Blocks: FC = () => {
                 color='orange.400' fontSize={['sm', 'lg', '2xl']} textAlign='center' fontWeight='bold'
             >
                 <Grid
-                    templateRows={'repeat(3, 1fr)'}
+                    templateRows={'repeat(1, 1fr)'}
                     templateColumns={'repeat(12, 1fr)'}
                     p={1} gap={2} textAlign='center'
                 >
@@ -100,7 +100,7 @@ export const Blocks: FC = () => {
 
                     <GridItem colStart={5} colEnd={9} bg='gray.600'>
                         <Text color='blue.300'> Block Height:</Text>
-                        <Text fontSize={['xl', '2xl']} >{putCommas(block.block_height)}</Text>
+                        <Text fontSize={['lg', 'xl', '3xl']} >{putCommas(block.block_height)}</Text>
                     </GridItem >
 
                     <GridItem colStart={9} colEnd={13} bg='gray.700'>

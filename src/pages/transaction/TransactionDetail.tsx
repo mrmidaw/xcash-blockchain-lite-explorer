@@ -62,6 +62,12 @@ export const TransactionDetail: FC = () => {
         hidden: { opacity: 0 },
     };
 
+    // Function for placing commas in numbers
+    const putCommas = (num: number) => {
+        return num.toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    };
+
     const decimalAmount = (num: number) => {
         return num / 1000000;
     };
@@ -74,22 +80,22 @@ export const TransactionDetail: FC = () => {
         <MotionBox
             initial="hidden" animate="visible" variants={variants} transition={{ duration: 0.8, times: [0, 0.5, 1] }}
             bg='gray.500' p={2} my={6} mx='auto' maxW='96%' borderRadius="lg" color='orange.400'
-            fontSize={['sm', 'lg', '2xl']} textAlign='center' fontWeight='bold'
+            fontSize={['md', 'lg', '2xl']} textAlign='center' fontWeight='bold'
         >
-            <Text fontSize={['md', 'xl', '3xl']} color='blue.300'>Transaction Detail</Text>
+            <Text color='blue.300'>Transaction Detail</Text>
 
             <Grid
-                templateRows={'repeat(4, 1fr)'} templateColumns={'repeat(12, 1fr)'}
+                templateRows={'repeat(1, 1fr)'} templateColumns={'repeat(12, 1fr)'}
                 p={1} gap={2} textAlign='center'
             >
-                <GridItem colStart={1} colEnd={7} bg='gray.700' >
+                <GridItem colStart={1} colEnd={7} bg='gray.700'>
                     <Text mx={2} color='blue.300'>Block Height:</Text>
-                    <Text>{transaction.tx_block_height}</Text>
+                    <Text fontSize={['lg', 'xl', '3xl']}>{transaction.tx_block_height}</Text>
                 </GridItem >
 
                 <GridItem colStart={7} colEnd={13} bg='gray.700'>
                     <Text color='blue.300'>Block Unlock Height:</Text>
-                    <Text mx={2}>{transaction.tx_unlock_block}</Text>
+                    <Text fontSize={['lg', 'xl', '3xl']}>{transaction.tx_unlock_block}</Text>
                 </GridItem >
 
                 <GridItem colStart={1} colEnd={13} bg='gray.700'>
@@ -104,7 +110,7 @@ export const TransactionDetail: FC = () => {
 
                 <GridItem colStart={1} colEnd={5} bg='gray.700'>
                     <Text color='blue.300'> Transaction Time:</Text>
-                    <Text><Moment unix format="DD/MM/YY - hh:mm:ss">{transaction.tx_block_timestamp}</Moment></Text>
+                    <Text><Moment unix format="DD/MM/YY hh:mm:ss">{transaction.tx_block_timestamp}</Moment></Text>
                 </GridItem >
 
                 <GridItem colStart={5} colEnd={9} bg='gray.600'>
