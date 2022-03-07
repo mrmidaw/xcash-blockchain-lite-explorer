@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { useGetLastBlocksQuery } from '../../store/lastblocks/lastBlocks.api';
+import { Link } from "react-router-dom";
 import { BlockTransaction } from './BlockTransaction';
 import Moment from 'react-moment';
 import { GlobalSpinner } from '../../components/spinner/Spinner';
@@ -116,7 +117,9 @@ export const Blocks: FC = () => {
                     <GridItem colStart={1} colEnd={13} bg='gray.600'>
                         <Text color='blue.300' >
                             Block Mining Reward Transaction Hash:</Text>
-                        <Text mx={2}>{block.block_mining_reward_transaction_hash}</Text>
+                        <Link to={`BlockRewardTransaction=${block.block_mining_reward_transaction_hash}`}>
+                            <Text mx={2}>{block.block_mining_reward_transaction_hash}</Text>
+                        </Link>
                     </GridItem >
 
                     <GridItem colStart={1} colEnd={7} bg='gray.700' >

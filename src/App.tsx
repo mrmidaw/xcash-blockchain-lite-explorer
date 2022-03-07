@@ -13,6 +13,7 @@ import { Funds } from "./pages/funds/Funds";
 import { Stats } from "./pages/stats/Stats";
 import { NotFound } from "./pages/notFound/NotFound";
 import { TransactionDetail } from './pages/transaction/TransactionDetail';
+import { BlockMiningReward } from './pages/blockReward/BlockMiningReward';
 
 
 export const App: FC = () => (
@@ -28,6 +29,7 @@ export const App: FC = () => (
         <Route path='/Funds' element={<Funds />} />
         <Route path='/Stats' element={<Stats />} />
         <Route path="Transaction=:id" element={<TransactionDetail />} />
+        <Route path="BlockRewardTransaction=:id" element={<BlockMiningReward />} />
         <Route path='/*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>

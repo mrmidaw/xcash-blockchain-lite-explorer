@@ -3,7 +3,6 @@ import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Error } from "../error/Error";
 import { GlobalSpinner } from '../../components/spinner/Spinner';
-import { Link } from 'react-router-dom';
 import { GoCalendar } from 'react-icons/go';
 import { RiCurrencyLine } from 'react-icons/ri';
 import { MdPhotoSizeSelectLarge } from 'react-icons/md';

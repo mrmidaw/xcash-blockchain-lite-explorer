@@ -7,34 +7,23 @@ import { Error } from '../error/Error';
 import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
 import { GlobalSpinner } from '../../components/spinner/Spinner';
 
-export interface ITransactionData {
+export interface IBlockMiningReward {
     tx_block_height: number;
     tx_block_timestamp: number;
     tx_version: number;
     tx_settings: string;
     tx_ringct_version: number;
-    tx_fee: number;
     tx_size: number;
     tx_unlock_block: number;
     tx_extra: string;
-    tx_ringsize: number;
-    tx_addresses: string;
-    tx_ecdh_data: string;
-    tx_key_images: string;
-    tx_key_images_ring_address: string;
-    tx_key_images_ring_tx_hash: string;
-    tx_key_images_ring_address_tx_ring_addresses: string;
-    tx_key_images_ring_address_tx_block_height: string;
-    tx_key_images_ring_address_tx_extra: string;
-    tx_key_images_ring_address_tx_ecdh_data: string;
-    tx_key_images_ring_address_tx_ring_size: string;
-    tx_key_images_ring_address_tx_block_timestamp: string;
+    tx_address: string;
+    tx_address_amount: number;
 }
 
-export const TransactionDetail: FC = () => {
+export const BlockMiningReward: FC = () => {
     const { id } = useParams();
     const [loading, setLoading] = useState(false);
-    const [transaction, setTransaction] = useState<ITransactionData>({});
+    const [blockReward, setBlockReward] = useState<IBlockMiningReward>({});
 
     useEffect(() => {
         // This function fetch transaction data as object
@@ -43,7 +32,7 @@ export const TransactionDetail: FC = () => {
                 setLoading(true);
                 const res = await axios.get(`https://explorer.xcash.foundation/gettransactiondata?tx_hash=${id}`);
                 const data = await res.data;
-                setTransaction(data);
+                setBlockReward(data);
                 setLoading(false);
             } catch (error) {
                 if (error) {
@@ -63,7 +52,7 @@ export const TransactionDetail: FC = () => {
     };
 
     const decimalAmount = (num: number) => {
-        return num / 1000000;
+        return (num / 1).toFixed(2);
     };
 
     if (loading) {
@@ -76,7 +65,7 @@ export const TransactionDetail: FC = () => {
             bg='gray.500' p={2} my={6} mx='auto' maxW='96%' borderRadius="lg" color='orange.400'
             fontSize={['md', 'lg', '2xl']} textAlign='center' fontWeight='bold'
         >
-            <Text color='blue.300'>Transaction Detail</Text>
+            <Text color='blue.300'>Block Reward Transaction Data</Text>
 
             <Grid
                 templateRows={'repeat(1, 1fr)'} templateColumns={'repeat(12, 1fr)'}
@@ -84,37 +73,42 @@ export const TransactionDetail: FC = () => {
             >
                 <GridItem colStart={1} colEnd={7} bg='gray.700'>
                     <Text mx={2} color='blue.300'>Block Height:</Text>
-                    <Text fontSize={['lg', 'xl', '3xl']}>{transaction.tx_block_height}</Text>
+                    <Text fontSize={['lg', 'xl', '3xl']}>{blockReward.tx_block_height}</Text>
                 </GridItem >
 
                 <GridItem colStart={7} colEnd={13} bg='gray.700'>
                     <Text color='blue.300'>Block Unlock Height:</Text>
-                    <Text fontSize={['lg', 'xl', '3xl']}>{transaction.tx_unlock_block}</Text>
+                    <Text fontSize={['lg', 'xl', '3xl']}>{blockReward.tx_unlock_block}</Text>
                 </GridItem >
 
                 <GridItem colStart={1} colEnd={13} bg='gray.700'>
-                    <Text color='blue.300'>Transaction Hash:</Text>
+                    <Text color='blue.300'>Block Reward Transaction Hash:</Text>
                     <Text mx={2}>{id}</Text>
                 </GridItem >
 
                 <GridItem colStart={1} colEnd={13} bg='gray.600'>
+                    <Text color='blue.300'>Stealth Address Receiving the Block Reward:</Text>
+                    <Text mx={2}>{blockReward.tx_address}</Text>
+                </GridItem >
+
+                <GridItem colStart={1} colEnd={13} bg='gray.600'>
                     <Text color='blue.300'>Extra:</Text>
-                    <Text mx={2}>{transaction.tx_extra}</Text>
+                    <Text mx={2}>{blockReward.tx_extra}</Text>
                 </GridItem >
 
                 <GridItem colStart={1} colEnd={5} bg='gray.700'>
-                    <Text color='blue.300'> Transaction Time:</Text>
-                    <Text><Moment unix format="DD/MM/YY - hh:mm:ss">{transaction.tx_block_timestamp}</Moment></Text>
+                    <Text color='blue.300'> Block Time:</Text>
+                    <Text><Moment unix format="DD/MM/YY - hh:mm:ss">{blockReward.tx_block_timestamp}</Moment></Text>
                 </GridItem >
 
                 <GridItem colStart={5} colEnd={9} bg='gray.600'>
-                    <Text color='blue.300'>Transaction Fee:</Text>
-                    <Text>{decimalAmount(transaction.tx_fee).toFixed(2)} XCASH</Text>
+                    <Text color='blue.300'>Block Reward:</Text>
+                    <Text>{decimalAmount(blockReward.tx_address_amount)} XCASH</Text>
                 </GridItem >
 
                 <GridItem colStart={9} colEnd={13} bg='gray.700'>
-                    <Text color='blue.300'>Transaction Size:</Text>
-                    <Text mx={2}>{transaction.tx_size} KB</Text>
+                    <Text color='blue.300'>Block Reward Size:</Text>
+                    <Text mx={2}>{decimalAmount(blockReward.tx_size)} KB</Text>
                 </GridItem >
             </Grid>
         </MotionBox>
