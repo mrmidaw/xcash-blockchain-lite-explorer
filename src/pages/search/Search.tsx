@@ -17,12 +17,8 @@ export const Search: FC = () => {
     };
 
     return (
-        <MotionBox
-            initial="hidden"
-            animate="visible"
-            variants={variants}
-            transition={{ duration: 0.8, times: [0, 0.5, 1] }
-            }
+        <MotionBox initial="hidden" animate="visible" variants={variants}
+            transition={{ duration: 0.8, times: [0, 0.5, 1] }}
             textAlign='center'
         >
             <Center>

@@ -76,7 +76,7 @@ export const TransactionDetail: FC = () => {
             bg='gray.500' p={2} my={6} mx='auto' maxW='96%' borderRadius="lg" color='orange.400'
             fontSize={['md', 'lg', '2xl']} textAlign='center' fontWeight='bold'
         >
-            <Text color='blue.300'>Transaction Detail</Text>
+            <Text color='blue.300' fontSize={['lg', 'xl', '3xl']}>Transaction Detail</Text>
 
             <Grid
                 templateRows={'repeat(1, 1fr)'} templateColumns={'repeat(12, 1fr)'}

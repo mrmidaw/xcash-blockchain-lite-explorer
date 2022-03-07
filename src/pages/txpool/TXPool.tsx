@@ -146,7 +146,7 @@ export const TXPool: FC = () => {
 
                                 <GridItem colStart={2} colEnd={7} bg='gray.600'>
                                     <Text mx={2} color='blue.300' >Date and Time:</Text>
-                                    <Text mx={2}> {!pool.transaction_tx_size ? '' : '01/01/1970 - 3:00:00'}</Text>
+                                    <Text mx={2}> {!pool.transaction_tx_size ? '' : '01/01/1970'}</Text>
                                 </GridItem>
                             </Grid>
                         </GridItem>
