@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaWpexplorer } from 'react-icons/fa';
 import { GiWhirlpoolShuriken } from 'react-icons/gi';
 import { MdLocationSearching } from 'react-icons/md';
@@ -20,7 +20,7 @@ export const Navbar: FC = () => {
                 <Button onClick={() => navigate('/')} bg='gray.600'>
                     <Box mr={2} ><FaWpexplorer size={24} /></Box>
                     <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' fontWeight='bold' >
-                        Blocks
+                        Explorer
                     </Text>
                 </Button>
 
@@ -45,14 +45,12 @@ export const Navbar: FC = () => {
                     </Text>
                 </Button>
 
-                <Link to='/Funds'>
-                    <Button bg='gray.600' w='100%'>
-                        <Box mr={2} ><RiExchangeFundsLine size={24} /></Box>
-                        <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' fontWeight='bold'>
-                            Funds
-                        </Text>
-                    </Button>
-                </Link>
+                <Button onClick={() => navigate('/Funds')} bg='gray.600'>
+                    <Box mr={2} ><RiExchangeFundsLine size={24} /></Box>
+                    <Text fontSize={['sm', 'md', 'lg', 'xl']} color='black' fontWeight='bold'>
+                        Funds
+                    </Text>
+                </Button>
 
                 <Button onClick={() => navigate('/Stats')} bg='gray.600'>
                     <Box mr={2}><ImStatsBars2 size={22} /></Box>

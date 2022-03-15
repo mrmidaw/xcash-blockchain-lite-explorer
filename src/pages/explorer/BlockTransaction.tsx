@@ -55,7 +55,7 @@ export const BlockTransaction: FC<IProps> = ({ block }) => {
                         <GridItem colStart={1} colEnd={13} bg='gray.600'>
                             <Text color='blue.300' >Transaction Hash:</Text>
                             <Link to={`Transaction=${transaction.block_tx_hashes}`}>
-                                <Text mx={2}>{transaction.block_tx_hashes}</Text>
+                                <Text mx={2} color='orange.300'>{transaction.block_tx_hashes}</Text>
                             </Link>
                         </GridItem>
 

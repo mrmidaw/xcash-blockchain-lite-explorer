@@ -9,7 +9,7 @@ import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
 
-export const Blocks: FC = () => {
+export const Explorer: FC = () => {
     const { data, isLoading, error } = useGetLastBlocksQuery();
 
     // Framer Motion
@@ -86,7 +86,7 @@ export const Blocks: FC = () => {
                 transition={{ duration: 0.8, times: [0, 0.5, 1] }}
                 key={block.block_height}
                 bg='gray.500'
-                p={2} my={6} mx='auto' maxW='96%' borderRadius="lg"
+                p={2} my={8} mx='auto' maxW='96%' borderRadius="lg"
                 color='orange.400' fontSize={['sm', 'lg', '2xl']} textAlign='center' fontWeight='bold'
             >
                 <Grid
@@ -96,7 +96,11 @@ export const Blocks: FC = () => {
                 >
                     <GridItem colStart={1} colEnd={5} bg='gray.700'>
                         <Text color='blue.300'> Block Time:</Text>
-                        <Text><Moment unix format="DD/MM/YY - hh:mm:ss">{block.block_timestamp}</Moment></Text>
+                        <Text>
+                            <Moment unix format="DD/MM/YY - hh:mm:ss">
+                                {block.block_timestamp}
+                            </Moment>
+                        </Text>
                     </GridItem >
 
                     <GridItem colStart={5} colEnd={9} bg='gray.600'>
@@ -110,15 +114,17 @@ export const Blocks: FC = () => {
                     </GridItem >
 
                     <GridItem colStart={1} colEnd={13} bg='gray.700'>
-                        <Text color='blue.300' >Block Hash:</Text>
-                        <Text mx={2}>{block.block_hash}</Text>
+                        <Text color='blue.300'>Block Hash:</Text>
+                        <Link to={`BlockHashData=${block.block_hash}`}>
+                            <Text mx={2} color='orange.300'>{block.block_hash}</Text>
+                        </Link>
                     </GridItem >
 
                     <GridItem colStart={1} colEnd={13} bg='gray.600'>
                         <Text color='blue.300' >
                             Block Mining Reward Transaction Hash:</Text>
                         <Link to={`BlockRewardTransaction=${block.block_mining_reward_transaction_hash}`}>
-                            <Text mx={2}>{block.block_mining_reward_transaction_hash}</Text>
+                            <Text mx={2} color='orange.300'>{block.block_mining_reward_transaction_hash}</Text>
                         </Link>
                     </GridItem >
 
