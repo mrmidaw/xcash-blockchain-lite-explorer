@@ -47,7 +47,7 @@ export const Stats: FC = () => {
     return (
         <MotionBox
             initial="hidden" animate="visible" variants={variants}
-            transition={{ duration: 0.8, times: [0, 0.5, 1] }} textAlign='center'
+            transition={{ duration: 0.8, times: [0, 0.5, 1] }} textAlign='center' color='white'
         >
             <Text color='orange.500' fontSize={['lg', 'xl', '3xl']} fontWeight={600}>
                 X-CASH Data
@@ -55,7 +55,7 @@ export const Stats: FC = () => {
 
             <Box
                 bg='gray.500' maxW='96%' mb={4} p={4} mx='auto'
-                borderRadius="lg" fontSize={['md', '2xl']} fontWeight='500'
+                borderRadius="lg" fontSize={['md', '2xl']} fontWeight='500' 
             >
                 <Grid templateColumns={['repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)']} gap={4}>
                     <GridItem bg='gray.600'>
@@ -66,7 +66,7 @@ export const Stats: FC = () => {
 
                             <GridItem colStart={2} colEnd={7} bg='blue.500'>
                                 <Text color='blue.300'>Algorithm</Text>
-                                <Text>DPoPS</Text>
+                                <Text >DPoPS</Text>
                             </GridItem>
                         </Grid>
                     </GridItem>

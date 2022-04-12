@@ -1,13 +1,24 @@
 import React, { FC } from "react";
+
 import { useGetLastBlocksQuery } from '../../store/lastblocks/lastBlocks.api';
-import { Link } from "react-router-dom";
 import { BlockTransaction } from './BlockTransaction';
-import Moment from 'react-moment';
+
+import { Link } from "react-router-dom";
+
 import { GlobalSpinner } from '../../components/spinner/Spinner';
 import { Error } from '../error/Error';
+
 import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import Moment from 'react-moment';
 
+import { CgFormatLineHeight } from "react-icons/cg";
+import { GoCalendar } from 'react-icons/go';
+import { RiMoneyDollarBoxLine } from 'react-icons/ri';
+import { BiCodeBlock } from 'react-icons/bi';
+import { AiOutlineBlock } from 'react-icons/ai';
+import { HiOutlineChartSquareBar } from 'react-icons/hi';
+import { MdPhotoSizeSelectLarge } from 'react-icons/md';
 
 export const Explorer: FC = () => {
     const { data, isLoading, error } = useGetLastBlocksQuery();
@@ -76,7 +87,6 @@ export const Explorer: FC = () => {
 
     const totalBlocksArray = modifyFetchLastBlocks();
 
-
     return (
         (totalBlocksArray.map((block) => (
             <MotionBox
@@ -86,7 +96,7 @@ export const Explorer: FC = () => {
                 transition={{ duration: 0.8, times: [0, 0.5, 1] }}
                 key={block.block_height}
                 bg='gray.500'
-                p={2} my={8} mx='auto' maxW='96%' borderRadius="lg"
+                p={2} my={6} mx='auto' maxW='96%' borderRadius="lg"
                 color='orange.400' fontSize={['sm', 'lg', '2xl']} textAlign='center' fontWeight='bold'
             >
                 <Grid
@@ -94,52 +104,109 @@ export const Explorer: FC = () => {
                     templateColumns={'repeat(12, 1fr)'}
                     p={1} gap={2} textAlign='center'
                 >
-                    <GridItem colStart={1} colEnd={5} bg='gray.700'>
-                        <Text color='blue.300'> Block Time:</Text>
-                        <Text>
-                            <Moment unix format="DD/MM/YY - hh:mm:ss">
-                                {block.block_timestamp}
-                            </Moment>
-                        </Text>
-                    </GridItem >
-
-                    <GridItem colStart={5} colEnd={9} bg='gray.600'>
-                        <Text color='blue.300'> Block Height:</Text>
-                        <Text fontSize={['lg', 'xl', '3xl']} >{putCommas(block.block_height)}</Text>
-                    </GridItem >
-
-                    <GridItem colStart={9} colEnd={13} bg='gray.700'>
-                        <Text color='blue.300' >Block Reward:</Text>
-                        <Text mx={2} >{block.block_reward}</Text>
-                    </GridItem >
-
-                    <GridItem colStart={1} colEnd={13} bg='gray.700'>
-                        <Text color='blue.300'>Block Hash:</Text>
-                        <Link to={`BlockHashData=${block.block_hash}`}>
-                            <Text mx={2} color='orange.300'>{block.block_hash}</Text>
-                        </Link>
-                    </GridItem >
-
                     <GridItem colStart={1} colEnd={13} bg='gray.600'>
-                        <Text color='blue.300' >
-                            Block Mining Reward Transaction Hash:</Text>
-                        <Link to={`BlockRewardTransaction=${block.block_mining_reward_transaction_hash}`}>
-                            <Text mx={2} color='orange.300'>{block.block_mining_reward_transaction_hash}</Text>
-                        </Link>
+                        <Grid templateColumns={'repeat(12, 1fr)'}>
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300' >
+                                <CgFormatLineHeight size={18} />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={13} bg='gray.700'>
+                                <Text color='blue.300'> Block Height:</Text>
+                                <Text fontSize={['lg', 'xl', '3xl']} >{putCommas(block.block_height)}</Text>
+                            </GridItem>
+                        </Grid>
                     </GridItem >
 
-                    <GridItem colStart={1} colEnd={7} bg='gray.700' >
-                        <Text mx={2} color='blue.300'>
-                            Transaction Amount:
-                        </Text>
-                        <Text>{block.block_tx_amount}</Text>
+                    <GridItem colStart={1} colEnd={7} bg='gray.700'>
+                        <Grid templateColumns={'repeat(6, 1fr)'}>
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300' >
+                                <GoCalendar size={18} />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={7} bg='gray.600'>
+                                <Text color='blue.300'> Block Time:</Text>
+                                <Text>
+                                    <Moment unix format="DD/MM/YY - hh:mm:ss">
+                                        {block.block_timestamp}
+                                    </Moment>
+                                </Text>
+                            </GridItem>
+                        </Grid>
                     </GridItem >
 
                     <GridItem colStart={7} colEnd={13} bg='gray.700'>
-                        <Text color='blue.400' >Block Size:</Text>
-                        <Text mx={2}>{block.block_size}</Text>
+                        <Grid templateColumns={'repeat(6, 1fr)'}>
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300' >
+                                <RiMoneyDollarBoxLine size={18} />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={7} bg='gray.600'>
+                                <Text color='blue.300' >Block Reward:</Text>
+                                <Text mx={2} >{block.block_reward}</Text>
+                            </GridItem>
+                        </Grid>
                     </GridItem >
 
+                    <GridItem colStart={1} colEnd={13} bg='gray.600'>
+                        <Grid templateColumns={'repeat(12, 1fr)'}>
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300' >
+                                <BiCodeBlock size={18} />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={13} bg='gray.700'>
+                                <Text color='blue.300'>Block Hash:</Text>
+                                <Link to={`BlockHashData=${block.block_hash}`}>
+                                    <Text mx={2} color='orange.300'>{block.block_hash}</Text>
+                                </Link>
+                            </GridItem>
+                        </Grid>
+                    </GridItem >
+
+                    <GridItem colStart={1} colEnd={13} bg='gray.600'>
+                        <Grid templateColumns={'repeat(12, 1fr)'}>
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300' >
+                                <AiOutlineBlock size={20} />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={13} bg='gray.700'>
+                                <Text color='blue.300' >
+                                    Block Mining Reward Transaction Hash:</Text>
+                                <Link to={`BlockRewardTransaction=${block.block_mining_reward_transaction_hash}`}>
+                                    <Text mx={2} color='orange.300'>{block.block_mining_reward_transaction_hash}</Text>
+                                </Link>
+                            </GridItem>
+                        </Grid>
+                    </GridItem >
+
+                    <GridItem colStart={1} colEnd={7} bg='gray.700' >
+                        <Grid templateColumns={'repeat(6, 1fr)'}>
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300' >
+                                <HiOutlineChartSquareBar size={18} />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={7} bg='gray.600'>
+                                <Text mx={2} color='blue.300'>
+                                     TX Amount:
+                                </Text>
+                                <Text>{block.block_tx_amount}</Text>
+                            </GridItem>
+                        </Grid>
+                    </GridItem >
+
+
+                    <GridItem colStart={7} colEnd={13} bg='gray.700'>
+                        <Grid templateColumns={'repeat(6, 1fr)'}>
+                            <GridItem colStart={1} colEnd={2} m='auto' color='blue.300' >
+                                <MdPhotoSizeSelectLarge size={18} />
+                            </GridItem>
+
+                            <GridItem colStart={2} colEnd={7} bg='gray.600'>
+                                <Text color='blue.400' >Block Size:</Text>
+                                <Text mx={2}>{block.block_size}</Text>
+                            </GridItem>
+                        </Grid>
+
+                    </GridItem >
                 </Grid>
 
                 {/* Block Transaction  */}
