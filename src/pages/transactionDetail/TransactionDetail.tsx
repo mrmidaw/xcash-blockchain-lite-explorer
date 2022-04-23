@@ -1,59 +1,22 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+
 import { motion } from 'framer-motion';
 import Moment from 'react-moment';
+
 import { Error } from '../error/Error';
-import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
 import { GlobalSpinner } from '../../components/spinner/Spinner';
 
-export interface ITransactionData {
-    tx_block_height: number;
-    tx_block_timestamp: number;
-    tx_version: number;
-    tx_settings: string;
-    tx_ringct_version: number;
-    tx_fee: number;
-    tx_size: number;
-    tx_unlock_block: number;
-    tx_extra: string;
-    tx_ringsize: number;
-    tx_addresses: string;
-    tx_ecdh_data: string;
-    tx_key_images: string;
-    tx_key_images_ring_address: string;
-    tx_key_images_ring_tx_hash: string;
-    tx_key_images_ring_address_tx_ring_addresses: string;
-    tx_key_images_ring_address_tx_block_height: string;
-    tx_key_images_ring_address_tx_extra: string;
-    tx_key_images_ring_address_tx_ecdh_data: string;
-    tx_key_images_ring_address_tx_ring_size: string;
-    tx_key_images_ring_address_tx_block_timestamp: string;
-}
+import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
+
+import { useGetTransactionDetailByIdQuery } from '../../store/transactionDetail/transactionDetail.api';
+
 
 export const TransactionDetail: FC = () => {
     const { id } = useParams();
-    const [loading, setLoading] = useState(false);
-    const [transaction, setTransaction] = useState<ITransactionData>({});
 
-    useEffect(() => {
-        // This function fetch transaction data as object
-        const fetchTransactionData = async (id: string | undefined) => {
-            try {
-                setLoading(true);
-                const res = await axios.get(`https://explorer.xcash.foundation/gettransactiondata?tx_hash=${id}`);
-                const data = await res.data;
-                setTransaction(data);
-                setLoading(false);
-            } catch (error) {
-                if (error) {
-                    return <Error />;
-                }
-            }
-        };
-
-        fetchTransactionData(id);
-    }, []);
+    // get transaction data from rtk query
+    const { isLoading, data, error } = useGetTransactionDetailByIdQuery(id);
 
     // Framer Motion
     const MotionBox = motion(Box);
@@ -66,7 +29,11 @@ export const TransactionDetail: FC = () => {
         return num / 1000000;
     };
 
-    if (loading) {
+    if (error) {
+        return <Error />;
+    }
+
+    if (isLoading) {
         return <GlobalSpinner />;
     }
 
@@ -84,12 +51,12 @@ export const TransactionDetail: FC = () => {
             >
                 <GridItem colStart={1} colEnd={7} bg='gray.700'>
                     <Text mx={2} color='blue.300'>Block Height:</Text>
-                    <Text fontSize={['lg', 'xl', '3xl']}>{transaction.tx_block_height}</Text>
+                    <Text fontSize={['lg', 'xl', '3xl']}>{data.tx_block_height}</Text>
                 </GridItem >
 
                 <GridItem colStart={7} colEnd={13} bg='gray.700'>
                     <Text color='blue.300'>Block Unlock Height:</Text>
-                    <Text fontSize={['lg', 'xl', '3xl']}>{transaction.tx_unlock_block}</Text>
+                    <Text fontSize={['lg', 'xl', '3xl']}>{data.tx_unlock_block}</Text>
                 </GridItem >
 
                 <GridItem colStart={1} colEnd={13} bg='gray.600'>
@@ -99,22 +66,22 @@ export const TransactionDetail: FC = () => {
 
                 <GridItem colStart={1} colEnd={13} bg='gray.700'>
                     <Text color='blue.300'>Extra:</Text>
-                    <Text mx={2}>{transaction.tx_extra}</Text>
+                    <Text mx={2}>{data.tx_extra}</Text>
                 </GridItem >
 
                 <GridItem colStart={1} colEnd={5} bg='gray.700'>
                     <Text color='blue.300'> Transaction Time:</Text>
-                    <Text><Moment unix format="DD/MM/YY - hh:mm:ss">{transaction.tx_block_timestamp}</Moment></Text>
+                    <Text><Moment unix format="DD/MM/YY - hh:mm:ss">{data.tx_block_timestamp}</Moment></Text>
                 </GridItem >
 
                 <GridItem colStart={5} colEnd={9} bg='gray.600'>
                     <Text color='blue.300' mx={2}>Transaction Fee:</Text>
-                    <Text>{decimalAmount(transaction.tx_fee).toFixed(2)} XCASH</Text>
+                    <Text>{decimalAmount(data.tx_fee).toFixed(2)} XCASH</Text>
                 </GridItem >
 
                 <GridItem colStart={9} colEnd={13} bg='gray.700'>
                     <Text color='blue.300' mx={2}>Transaction Size:</Text>
-                    <Text mx={2}>{transaction.tx_size} KB</Text>
+                    <Text mx={2}>{data.tx_size} KB</Text>
                 </GridItem >
             </Grid>
         </MotionBox>

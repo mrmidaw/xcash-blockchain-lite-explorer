@@ -14,7 +14,6 @@ This explorer is used to view the Xcash ( Private Cryptocurrency for the Web3.0 
 - React Hook Form
 - Framer Motion
 - React Icons
-- Axios
 - React Toastify
 - React Moment
 - Nivo - Radial Bar
