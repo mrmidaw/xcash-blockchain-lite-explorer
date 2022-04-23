@@ -18,7 +18,7 @@ export const WXcash: FC = () => {
             initial="hidden" animate="visible" variants={variants}
             transition={{ duration: 0.8, times: [0, 0.5, 1] }}
         >
-            <Box bg='gray.600' mx='auto' borderRadius="lg" maxW='96%' textAlign='center'>
+            <Box bg='gray.600' mx='auto' borderRadius="lg" maxW={['95%', '80%',]} textAlign='center'>
 
                 <Text
                     color='orange.500' fontSize={['lg', '2xl', '3xl', '4xl', '5xl']}

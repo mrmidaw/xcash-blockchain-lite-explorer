@@ -25,7 +25,7 @@ export const NotFound: FC = () => {
                 <Box>
                     <Text fontSize={['6xl', '8xl']} fontWeight='bold' mb='6'>Oops!</Text>
                     <Text fontSize={['4xl', '5xl']} mb='8'>404 - Page Not Found!</Text>
-                    <Button onClick={() => navigate('/')} fontSize='2xl' size='lg' colorScheme='gray'>
+                    <Button onClick={() => navigate('/')} fontSize='2xl' size='lg' colorScheme='blue'>
                         Back To Home
                     </Button>
                 </Box>

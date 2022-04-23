@@ -86,7 +86,7 @@ export const TXPool: FC = () => {
                 <MotionBox
                     initial="hidden" animate="visible" variants={variants}
                     transition={{ duration: 0.8, times: [0, 0.5, 1] }}
-                    key={index} bg='gray.500' p={2} my={4} mx='auto' maxW='96%' borderRadius="lg" color='orange.400' fontSize={['sm', 'lg', '2xl']} textAlign='center' fontWeight='bold'
+                    key={index} bg='gray.500' p={2} my={4} mx='auto' maxW={['95%', '80%',]} borderRadius="lg" color='orange.400' fontSize={['sm', 'lg', '2xl']} textAlign='center' fontWeight='bold'
                 >
                     <Grid
                         templateRows={'repeat(1, 1fr)'} templateColumns={'repeat(12, 1fr)'}

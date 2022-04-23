@@ -45,11 +45,12 @@ export const BlockTransaction: FC<IProps> = ({ block }) => {
         <Box>
             <Text color='blue.300'>Block Transactions</Text>
             {totalTransactionsArray.map((transaction, index) => (
-                <Box key={index} fontSize={['xs', 'md']} fontWeight='bold' textAlign='center' bg='teal.400'
+                <Box key={index} fontSize={['xs', 'md']} fontWeight='bold' textAlign='center' 
+                bgGradient='linear(to-r, teal.300, gray.400, teal.300)'
                     my={3} mx='auto' borderRadius="base">
 
                     <Grid
-                        templateRows={'repeat(2, 1fr)'} templateColumns={'repeat(12, 1fr)'}
+                        templateRows={'repeat(1, 1fr)'} templateColumns={'repeat(12, 1fr)'}
                         p={1} gap={1}
                     >
                         <GridItem colStart={1} colEnd={13} bg='gray.600'>

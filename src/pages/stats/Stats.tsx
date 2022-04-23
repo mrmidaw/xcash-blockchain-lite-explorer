@@ -47,14 +47,14 @@ export const Stats: FC = () => {
     return (
         <MotionBox
             initial="hidden" animate="visible" variants={variants}
-            transition={{ duration: 0.8, times: [0, 0.5, 1] }} textAlign='center' color='white'
+            transition={{ duration: 0.8, times: [0, 0.5, 1] }} textAlign='center' color='white' 
         >
             <Text color='orange.500' fontSize={['lg', 'xl', '3xl']} fontWeight={600}>
                 X-CASH Data
             </Text>
 
             <Box
-                bg='gray.500' maxW='96%' mb={4} p={4} mx='auto'
+                bg='gray.500' maxW={['95%', '80%',]} mb={4} p={4} mx='auto'
                 borderRadius="lg" fontSize={['md', '2xl']} fontWeight='500' 
             >
                 <Grid templateColumns={['repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)']} gap={4}>
@@ -106,7 +106,7 @@ export const Stats: FC = () => {
 
                                 <GridItem colStart={2} colEnd={7} bg='cadetblue'>
                                     <Text color='blue.300'>Block Reward</Text>
-                                    <Text>33,634</Text>
+                                    <Text>31,788</Text>
                                 </GridItem>
                             </Grid>
                         </GridItem>
@@ -119,7 +119,7 @@ export const Stats: FC = () => {
             </Text>
 
             < Box
-                bg='gray.500' maxW='96%' mb={4} p={4} mx='auto'
+                bg='gray.500' maxW={['95%', '80%',]} mb={4} p={4} mx='auto'
                 borderRadius="lg" fontSize={['md', '2xl']} fontWeight='500'
             >
                 <Grid
@@ -172,7 +172,7 @@ export const Stats: FC = () => {
             </Text>
 
             < Box
-                bg='gray.500' maxW='96%' mb={4} p={4} mx='auto'
+                bg='gray.500' maxW={['95%', '80%',]} mb={4} p={4} mx='auto'
                 borderRadius="lg" fontSize={['md', '2xl']} fontWeight='500'
             >
                 <Grid templateColumns={['repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)']} gap={4}>

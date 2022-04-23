@@ -96,7 +96,7 @@ export const Explorer: FC = () => {
                 transition={{ duration: 0.8, times: [0, 0.5, 1] }}
                 key={block.block_height}
                 bg='gray.500'
-                p={2} my={6} mx='auto' maxW='96%' borderRadius="lg"
+                p={2} my={6} mx='auto' maxW={['95%', '80%',]} borderRadius="lg"
                 color='orange.400' fontSize={['sm', 'lg', '2xl']} textAlign='center' fontWeight='bold'
             >
                 <Grid
@@ -186,7 +186,7 @@ export const Explorer: FC = () => {
 
                             <GridItem colStart={2} colEnd={7} bg='gray.600'>
                                 <Text mx={2} color='blue.300'>
-                                     TX Amount:
+                                    TX Amount:
                                 </Text>
                                 <Text>{block.block_tx_amount}</Text>
                             </GridItem>

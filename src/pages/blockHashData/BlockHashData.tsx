@@ -59,7 +59,7 @@ export const BlockHashData: FC = () => {
     return (
         <MotionBox
             initial="hidden" animate="visible" variants={variants} transition={{ duration: 0.8, times: [0, 0.5, 1] }}
-            bg='gray.500' p={2} my={6} mx='auto' maxW='96%' borderRadius="lg" color='orange.400' fontSize={['sm', 'lg', 'xl']} textAlign='center' fontWeight='bold'
+            bg='gray.500' p={2} my={6} mx='auto' maxW={['95%', '80%',]} borderRadius="lg" color='orange.400' fontSize={['sm', 'lg', 'xl']} textAlign='center' fontWeight='bold'
         >
             <Text color='blue.300' fontSize={['lg', 'xl', '3xl']}>
                 Block Hash Data

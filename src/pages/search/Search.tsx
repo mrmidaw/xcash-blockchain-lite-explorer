@@ -1,47 +1,60 @@
 import React, { FC } from "react";
-import { Box, Center, Text, } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { Box, Input, FormErrorMessage, FormLabel, FormControl, Button, Center, Text } from "@chakra-ui/react";
+import { useForm, SubmitHandler } from 'react-hook-form';
 
-
+type SearchForm = {
+    search: string;
+};
 
 export const Search: FC = () => {
-    // const { colorMode } = useColorMode();
-    // const [inputValue, setInputValue] = useState('');
-    // const searchLogic = (value: string) => { };
 
-    // Framer Motion
-    const MotionBox = motion(Box);
-    const variants = {
-        visible: { opacity: 1 },
-        hidden: { opacity: 0 },
+    const { handleSubmit, register, reset, formState: { errors, isSubmitting } } = useForm<SearchForm>({
+        mode: 'onBlur'
+    });
+
+    const onSubmit: SubmitHandler<SearchForm> = (data) => {
+        console.log(JSON.stringify(data));
+        reset();
     };
 
     return (
-        <MotionBox initial="hidden" animate="visible" variants={variants}
-            transition={{ duration: 0.8, times: [0, 0.5, 1] }}
-            textAlign='center'
+
+        <Box
+            bg='gray.500' maxW={['95%', '80%',]} mb={4} p={4} mx='auto'
+            borderRadius="lg" fontSize={['md', '2xl']} fontWeight='500' textAlign='center'
         >
+
             <Center>
                 <Text color='orange.500' fontSize={['xl', '2xl', '3xl', '4xl', '5xl']} fontWeight={600}>
                     Under Construction
                 </Text>
             </Center>
-        </MotionBox >
 
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <FormControl isInvalid={errors.search}>
+                    <FormLabel htmlFor='name'></FormLabel>
+                    <Input
+                        id='search'
+                        placeholder='Block Height, Black Hash, TX Hash, Block Reward TX Hash'
+                        {...register('search', {
+                            required: 'Please enter a search term',
+                            minLength: { value: 5, message: 'Minimum length should be 5' },
+                        })}
+                    />
 
-        // <Box bg={colorMode === 'dark' ? 'gray.600' : 'gray.200'} w="100%" p={4} color="white" borderRadius="lg">
+                    <FormErrorMessage>
+                        {errors.search && errors.search.message}
+                    </FormErrorMessage>
 
-        //     <Input placeholder="Block Height, Black Hash, TX Hash"
-        //         size="md" w="91%" mr='5'
-        //         onChange={(e) => setInputValue(e.target.value)}
-        //     />
+                    <Button
+                        mt={4} colorScheme='linkedin' isLoading={isSubmitting} type='submit'
+                        width={['80%', '50%',]}
+                    >
+                        Search
+                    </Button>
+                </FormControl>
+            </form>
+        </Box>
 
-        //     <IconButton
-        //         aria-label="Search database"
-        //         icon={<BsSearch />}
-        //         verticalAlign="none"
-        //         onClick={() => searchLogic(inputValue)}
-        //     />
-        // </Box>
     );
 };
