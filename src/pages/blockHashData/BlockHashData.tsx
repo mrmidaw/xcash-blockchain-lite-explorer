@@ -1,11 +1,14 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
+
 import { motion } from 'framer-motion';
 import Moment from 'react-moment';
+
 import { Error } from '../error/Error';
-import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
 import { GlobalSpinner } from '../../components/spinner/Spinner';
+
+import { useGetBlockHashDataByIdQuery } from '../../store/blockHashData/blockHashData.api';
 
 export interface IBlockHashData {
     block_height: number;
@@ -19,27 +22,9 @@ export interface IBlockHashData {
 
 export const BlockHashData: FC = () => {
     const { id } = useParams();
-    const [loading, setLoading] = useState(false);
-    const [blockData, setBlockData] = useState<IBlockHashData>({});
 
-    useEffect(() => {
-        // This function fetch transaction data as object
-        const fetchTransactionData = async (id: string | undefined) => {
-            try {
-                setLoading(true);
-                const res = await axios.get(`https://explorer.xcash.foundation/getblockdata?block_data=${id}`);
-                const data = await res.data;
-                setBlockData(data);
-                setLoading(false);
-            } catch (error) {
-                if (error) {
-                    return <Error />;
-                }
-            }
-        };
-
-        fetchTransactionData(id);
-    }, []);
+    // get hash data from rtk quey
+    const { data, error, isLoading } = useGetBlockHashDataByIdQuery(id);
 
     // Framer Motion
     const MotionBox = motion(Box);
@@ -52,7 +37,11 @@ export const BlockHashData: FC = () => {
         return (num / 1).toFixed(2);
     };
 
-    if (loading) {
+    if (error) {
+        return <Error />;
+    }
+
+    if (isLoading) {
         return <GlobalSpinner />;
     }
 
@@ -71,41 +60,41 @@ export const BlockHashData: FC = () => {
             >
                 <GridItem colStart={1} colEnd={7} bg='gray.700'>
                     <Text mx={2} color='blue.300'>Block Height:</Text>
-                    <Text fontSize={['lg', 'xl', '3xl']}>{blockData.block_height}</Text>
+                    <Text fontSize={['lg', 'xl', '3xl']}>{data.block_height}</Text>
                 </GridItem >
 
                 <GridItem colStart={7} colEnd={13} bg='gray.700'>
                     <Text color='blue.300'>Block TX Amount:</Text>
-                    <Text fontSize={['lg', 'xl', '3xl']}>{blockData.block_tx_amount}</Text>
+                    <Text fontSize={['lg', 'xl', '3xl']}>{data.block_tx_amount}</Text>
                 </GridItem >
 
                 <GridItem colStart={1} colEnd={13} bg='gray.600'>
                     <Text color='blue.300'>Block Hash:</Text>
-                    <Text mx={2}>{blockData.block_hash}</Text>
+                    <Text mx={2}>{data.block_hash}</Text>
                 </GridItem >
 
                 <GridItem colStart={1} colEnd={7} bg='gray.700'>
                     <Text mx={2} color='blue.300'>Block Size:</Text>
-                    <Text>{decimalAmount(blockData.block_size)} KB</Text>
+                    <Text>{decimalAmount(data.block_size)} KB</Text>
                 </GridItem >
 
                 <GridItem colStart={7} colEnd={13} bg='gray.700'>
                     <Text color='blue.300'>Block Reward:</Text>
-                    <Text>{decimalAmount(blockData.block_reward)} XCASH</Text>
+                    <Text>{decimalAmount(data.block_reward)} XCASH</Text>
                 </GridItem >
 
                 <GridItem colStart={1} colEnd={7} bg='gray.600'>
                     <Text mx={2} color='blue.300'>Block Time:</Text>
                     <Text>
                         <Moment unix format="DD/MM/YY - hh:mm:ss">
-                            {blockData.block_timestamp}
+                            {data.block_timestamp}
                         </Moment>
                     </Text>
                 </GridItem >
 
                 <GridItem colStart={7} colEnd={13} bg='gray.600'>
                     <Text color='blue.300'>Block Difficulty:</Text>
-                    <Text>{blockData.block_difficulty}</Text>
+                    <Text>{data.block_difficulty}</Text>
                 </GridItem >
 
             </Grid>
