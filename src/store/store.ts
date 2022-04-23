@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from '@reduxjs/toolkit/query';
 
 import { blockchainDataApi } from "./blockchainData/blockchainData.api";
-import { lastBlocksApi } from './lastBlocks/lastBlocks.api';
+import { lastBlocksApi } from './lastblocks/lastBlocks.api';
 import { blockHashDataApi } from './blockHashData/blockHashData.api';
 import { blockMiningRewardApi } from './blockMiningReward/blockMiningReward.api';
 import { transactionDetailApi } from './transactionDetail/transactionDetail.api';

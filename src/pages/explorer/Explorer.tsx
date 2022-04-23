@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import { useGetLastBlocksQuery } from '../../store/lastBlocks/lastBlocks.api';
+import { useGetLastBlocksQuery } from '../../store/lastblocks/lastBlocks.api';
 import { BlockTransaction } from './BlockTransaction';
 
 import { Link } from "react-router-dom";
